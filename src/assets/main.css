@@ -1,5 +1,13 @@
 @import './base.css';
 
+/* Réinitialiser les marges et les espacements de tous les éléments */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Optionnel : Inclure la marge intérieure et la marge extérieure dans le calcul de la taille */
+  overflow-x: hidden;
+}
+/* 
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -32,4 +40,4 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
-}
+} */
