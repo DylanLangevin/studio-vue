@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Navbar from '../../components/Homepage/Navbar.vue'
+// import Navbar from '../../components/Homepage/Navbar.vue'
 import Heroic from '../../components/Homepage/Heroic.vue'
 </script>
 

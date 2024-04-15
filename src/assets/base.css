@@ -7,8 +7,29 @@
   font-style: normal;
 }
 
-/* :root {
-  --vt-c-white: #ffffff;
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('fonts/OPENSAUCESANS-MEDIUM.TTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --vt-c-dark-yellow: #fffae6;
+  --vt-c-yellow: #ffefad;
+  --vt-c-light-yellow: #ffe270;
+
+  --vt-c-dark-green: #00a36d;
+  --vt-c-green: #006644;
+  --vt-c-light-green: #003926;
+
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 22px;
+  --font-size-h4: 28px;
+  --font-size-p: 16px;
+
+  /* --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
@@ -26,12 +47,12 @@
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-} */
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64); */
+}
 
 /* semantic color variables for this project */
-/* :root { */
-/* --color-background: var(--vt-c-white);
+:root {
+  --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -41,8 +62,8 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
-  --section-gap: 160px; */
-/* } */
+  --section-gap: 160px;
+}
 
 /* @media (prefers-color-scheme: dark) { */
 /* :root {
@@ -74,22 +95,30 @@ body {
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    'Tan Nimbus',
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
+  font-family: 'Tan Nimbus', 'Open Sauce Sans';
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: 'Tan Nimbus';
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-family: 'Tan Nimbus';
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-family: 'Tan Nimbus';
+  font-size: var(--font-size-h3);
+}
+h4 {
+  font-family: 'Tan Nimbus';
+  font-size: var(--font-size-h4);
+}
+
+p {
+  font-family: 'Open Sauce Sans';
+  font-size: var(--font-size-p);
 }
