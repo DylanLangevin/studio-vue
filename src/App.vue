@@ -1,10 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <RouterView />
+  <RouterView id="router" />
 </template>
 
 <style scoped>
+#router {
+  height: 10000px;
+}
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;

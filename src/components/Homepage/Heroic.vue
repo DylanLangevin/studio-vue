@@ -2,8 +2,8 @@
 
 <template>
   <main id="heroic-section">
-    <div id="img-background">
-      <h1 id="h1-title">BOUGIES ARTISANALES</h1>
+    <div id="img-background" class="filter">
+      <h1 id="h1-title">BOUGIES <br />ARTISANALES</h1>
     </div>
   </main>
 </template>
@@ -17,12 +17,11 @@
   align-items: center;
   position: relative;
 }
-
 #img-background {
   height: 100%;
   width: 100vw;
-  filter: opacity(80%);
-  background-image: url('../../assets/img/858BFC24-970F-4BB3-8A3F-F1872AB87898.png');
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('../../assets/img/858BFC24-970F-4BB3-8A3F-F1872AB87898.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -36,5 +35,7 @@
 #h1-title {
   color: white;
   position: relative;
+  text-align: center;
+  z-index: 10;
 }
 </style>
