@@ -1,14 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div id="router">
-    <RouterView />
-  </div>
+  <RouterView id="router" />
 </template>
 
 <style scoped>
 #router {
-  height: 100%;
+  height: auto;
   z-index: -10001;
   position: relative;
 }
