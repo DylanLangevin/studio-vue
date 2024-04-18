@@ -1,19 +1,19 @@
 <script setup lang="ts">
 interface ButtonProps {
-  text: string
+  text: String
+  color: String
 }
 const props = defineProps<ButtonProps>()
 </script>
 
 <template>
-  <main id="button">
+  <main id="button" :class="'button-' + props.color">
     <p>{{ props.text }}</p>
   </main>
 </template>
 
 <style scoped>
 #button {
-  background-color: #fff;
   border: none;
   width: fit-content;
   padding: 15px;
@@ -22,7 +22,32 @@ const props = defineProps<ButtonProps>()
   position: relative;
   cursor: pointer;
 }
+
 #button:hover {
   cursor: pointer;
+}
+
+.button-white {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.button-white p {
+  color: white;
+}
+
+.button-white:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Utilisation de RGBA pour définir une opacité partielle */
+  transition: background-color 0.2s ease-in-out; /* Transition uniquement pour le fond */
+}
+.button-white:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.button-white:hover p {
+  color: black;
 }
 </style>

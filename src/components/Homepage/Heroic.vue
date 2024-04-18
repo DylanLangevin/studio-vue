@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import Button from '../Button.vue'
+import { defineEmits } from 'vue'
+
+const emits = defineEmits(['scrollToSection'])
+
+const scrollToSection = (section: string) => {
+  emits('scrollToSection', section)
+}
 </script>
 
 <template>
@@ -8,7 +15,12 @@ import Button from '../Button.vue'
       <div id="heroic-content">
         <span></span>
         <h1 id="h1-title">BOUGIES <br />ARTISANALES</h1>
-        <Button class="btn" :text="'Découvrir'" />
+        <Button
+          @click="scrollToSection('preview-section')"
+          class="btn"
+          :text="'Découvrir mes bougies'"
+          :color="'white'"
+        />
       </div>
     </div>
   </main>

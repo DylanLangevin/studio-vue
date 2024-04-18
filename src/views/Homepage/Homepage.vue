@@ -10,6 +10,13 @@ const handleScroll = () => {
   isScrolled.value = scrollTop > 850
 }
 
+const handleScrollToSection = (val: string) => {
+  const targetSection = document.getElementById(val)
+  if (targetSection) {
+    targetSection.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -22,8 +29,8 @@ onUnmounted(() => {
 <template>
   <main id="homepage">
     <Navbar ref="scrollContainer" @scroll="handleScroll" :isScrolled="isScrolled" />
-    <Heroic id="heroic-section" />
-    <div id="suite"></div>
+    <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
+    <div id="preview-section"></div>
   </main>
 </template>
 
@@ -38,7 +45,7 @@ onUnmounted(() => {
   position: relative;
   z-index: -12;
 }
-#suite {
+#preview-section {
   height: 100vh;
 }
 </style>
