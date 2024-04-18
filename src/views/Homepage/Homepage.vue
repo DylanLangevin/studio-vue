@@ -6,6 +6,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 const isScrolled = ref(false)
 
 const handleScroll = () => {
+  console.log(isScrolled.value)
   const scrollTop = document.documentElement.scrollTop
   isScrolled.value = scrollTop > 850
 }
@@ -30,5 +31,7 @@ onUnmounted(() => {
 #homepage {
   height: 2000px;
   width: 100%;
+  z-index: -1000;
+  position: relative;
 }
 </style>

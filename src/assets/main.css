@@ -7,13 +7,11 @@
   box-sizing: border-box; /* Optionnel : Inclure la marge intérieure et la marge extérieure dans le calcul de la taille */
   overflow-x: hidden;
 }
-/* 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  z-index: -10;
+  position: relative;
 }
+/* 
 
 a,
 .green {

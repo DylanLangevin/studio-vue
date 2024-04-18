@@ -1,24 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Button from '../Button.vue'
+</script>
 
 <template>
-  <main id="heroic-section">
+  <main>
     <div id="img-background" class="filter">
-      <h1 id="h1-title">BOUGIES <br />ARTISANALES</h1>
+      <div id="heroic-content">
+        <span></span>
+        <h1 id="h1-title">BOUGIES <br />ARTISANALES</h1>
+        <Button class="btn" :text="'Découvrir'" />
+      </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-#heroic-section {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
 #img-background {
-  height: 100%;
+  min-height: 100vh;
   width: 100vw;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('../../assets/img/858BFC24-970F-4BB3-8A3F-F1872AB87898.png');
@@ -37,5 +35,24 @@
   position: relative;
   text-align: center;
   z-index: 10;
+}
+
+#heroic-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 90%;
+}
+
+#heroic-text {
+  color: white;
+  max-width: 70%;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: aqua;
+  cursor: pointer;
 }
 </style>

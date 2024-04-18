@@ -86,7 +86,7 @@
 } */
 
 body {
-  min-height: 100vh;
+  min-height: fit-content;
   color: var(--color-text);
   background: var(--color-background);
   transition:
@@ -97,6 +97,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  z-index: -10;
+  position: relative;
 }
 
 h1 {

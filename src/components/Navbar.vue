@@ -65,6 +65,6 @@ const props = defineProps<NavbarProps>()
 
 .position-absolute {
   color: white;
-  position: absolute;
+  position: fixed;
 }
 </style>
