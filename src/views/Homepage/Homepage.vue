@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Navbar from '../../components/Navbar.vue'
 import Heroic from '../../components/Homepage/Heroic.vue'
+import Preview from '../../components/Homepage/Preview.vue'
+import Banner from '../../components/Homepage/Banner.vue'
+
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const isScrolled = ref(false)
@@ -30,7 +33,8 @@ onUnmounted(() => {
   <main id="homepage">
     <Navbar ref="scrollContainer" @scroll="handleScroll" :isScrolled="isScrolled" />
     <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
-    <div id="preview-section"></div>
+    <Banner />
+    <Preview />
   </main>
 </template>
 
@@ -45,7 +49,8 @@ onUnmounted(() => {
   position: relative;
   z-index: -12;
 }
+
 #preview-section {
-  height: 100vh;
+  height: 566px;
 }
 </style>
