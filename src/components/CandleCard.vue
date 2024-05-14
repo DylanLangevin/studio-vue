@@ -27,10 +27,11 @@ const cardStyle = computed(() => ({
       :class="{ 'background-darker': descActive }"
       @mouseover="descActive = true"
       @mouseleave="descActive = false"
-      id="card"
       :style="cardStyle"
+      id="card"
     >
       <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
+
       <div v-if="descActive" id="card-desc">
         <p>{{ props.desc }} eee</p>
       </div>
@@ -64,20 +65,14 @@ const cardStyle = computed(() => ({
 
 #card-desc {
   background-color: rgba(255, 255, 255, 0.7);
-
   width: 100%;
-  z-index: 200;
+  z-index: 2;
   padding: 20px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  transition: 0.1s ease-in;
 }
 
 #card-desc p {
   font-size: 0.8rem;
-}
-
-.background-darker {
-  filter: brightness(0.7);
 }
 </style>

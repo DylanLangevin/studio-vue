@@ -35,6 +35,8 @@ onUnmounted(() => {
     <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
     <Banner />
     <Preview />
+    <Banner />
+    <div id="img-transition"></div>
   </main>
 </template>
 
@@ -52,5 +54,14 @@ onUnmounted(() => {
 
 #preview-section {
   height: 566px;
+}
+
+#img-transition {
+  background-image: url('../../assets/img/569ACEB2-B0F7-4C66-9A63-420E80480929.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;
+  width: 100%;
 }
 </style>
