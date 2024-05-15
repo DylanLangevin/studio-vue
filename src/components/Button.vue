@@ -31,18 +31,18 @@ const props = defineProps<ButtonProps>()
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.button-white p {
+.button-green {
+  background-color: var(--vt-c-dark-green);
+}
+
+.button-white p,
+.button-green p {
   color: white;
 }
 
 .button-white:hover {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.3
-  ); /* Utilisation de RGBA pour définir une opacité partielle */
-  transition: background-color 0.2s ease-in-out; /* Transition uniquement pour le fond */
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.2s ease-in-out;
 }
 .button-white:hover {
   background-color: rgba(255, 255, 255, 0.9);

@@ -40,7 +40,7 @@ import { onMounted } from 'vue'
 } */
 
 #preview-section {
-  height: 566px;
+  height: 800px;
   width: 100%;
   background-color: var(--vt-c-dark-yellow);
 
@@ -50,7 +50,7 @@ import { onMounted } from 'vue'
 }
 
 #preview-content {
-  min-width: 1078px;
+  min-width: 1200px;
   z-index: 2;
 }
 
@@ -75,7 +75,7 @@ import { onMounted } from 'vue'
 }
 
 #cards-container {
-  margin: 20px 0;
+  margin: 40px 0;
   display: flex;
   justify-content: space-between;
 }

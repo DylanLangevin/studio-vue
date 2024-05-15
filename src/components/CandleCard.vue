@@ -41,8 +41,8 @@ const cardStyle = computed(() => ({
 
 <style scoped>
 #card {
-  width: 235px;
-  height: 295px;
+  width: 281px;
+  height: 353px;
   border-radius: 16px;
   display: flex;
   align-items: center;

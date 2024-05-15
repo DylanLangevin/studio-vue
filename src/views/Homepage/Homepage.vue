@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar.vue'
 import Heroic from '../../components/Homepage/Heroic.vue'
 import Preview from '../../components/Homepage/Preview.vue'
 import Banner from '../../components/Homepage/Banner.vue'
+import MyStory from '../../components/Homepage/MyStory.vue'
 
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -35,8 +36,9 @@ onUnmounted(() => {
     <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
     <Banner />
     <Preview />
-    <Banner />
-    <div id="img-transition"></div>
+    <!-- <Banner /> -->
+    <div id="img-banner"></div>
+    <MyStory />
   </main>
 </template>
 
@@ -56,12 +58,15 @@ onUnmounted(() => {
   height: 566px;
 }
 
-#img-transition {
+#story-section {
+}
+
+#img-banner {
   background-image: url('../../assets/img/569ACEB2-B0F7-4C66-9A63-420E80480929.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 280px;
+  height: 350px;
   width: 100%;
 }
 </style>
