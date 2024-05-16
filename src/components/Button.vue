@@ -16,7 +16,7 @@ const props = defineProps<ButtonProps>()
 #button {
   border: none;
   width: fit-content;
-  padding: 15px;
+  padding: 10px;
   border-radius: 100px;
   z-index: 120;
   position: relative;

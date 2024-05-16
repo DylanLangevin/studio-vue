@@ -31,7 +31,7 @@ const scrollToSection = (section: string) => {
           />
         </div>
         <div id="text-wrapper">
-          <h2>Mon Histoire</h2>
+          <h3>Mon Histoire</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti facilis quam, in
             libero est rem corporis, amet unde ipsa deserunt sint aliquam excepturi nobis dicta non.
@@ -88,12 +88,9 @@ const scrollToSection = (section: string) => {
   padding-left: 100px;
 }
 
-#text-wrapper h2 {
+#text-wrapper h3 {
   margin-bottom: 50px;
-}
-
-#text-wrapper h2 {
-  margin-bottom: 50px;
+  color: var(--vt-c-dark-green);
 }
 
 #btn-wrapper {

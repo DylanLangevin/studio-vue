@@ -4,6 +4,7 @@ import Heroic from '../../components/Homepage/Heroic.vue'
 import Preview from '../../components/Homepage/Preview.vue'
 import Banner from '../../components/Homepage/Banner.vue'
 import MyStory from '../../components/Homepage/MyStory.vue'
+import Explanation from '../../components/Homepage/Explanation.vue'
 
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -39,6 +40,8 @@ onUnmounted(() => {
     <!-- <Banner /> -->
     <div id="img-banner"></div>
     <MyStory />
+    <div id="img-banner-2"></div>
+    <Explanation />
   </main>
 </template>
 
@@ -61,12 +64,18 @@ onUnmounted(() => {
 #story-section {
 }
 
-#img-banner {
-  background-image: url('../../assets/img/569ACEB2-B0F7-4C66-9A63-420E80480929.png');
+#img-banner,
+#img-banner-2 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 350px;
+  height: 250px;
   width: 100%;
+}
+#img-banner {
+  background-image: url('../../assets/img/569ACEB2-B0F7-4C66-9A63-420E80480929.png');
+}
+#img-banner-2 {
+  background-image: url('../../assets/img/7F94ABB3-3AAE-41E4-863E-102B0FF05D56.png');
 }
 </style>
