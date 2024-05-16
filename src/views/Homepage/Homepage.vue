@@ -5,6 +5,7 @@ import Preview from '../../components/Homepage/Preview.vue'
 import Banner from '../../components/Homepage/Banner.vue'
 import MyStory from '../../components/Homepage/MyStory.vue'
 import Explanation from '../../components/Homepage/Explanation.vue'
+import Footer from '../../components/Footer.vue'
 
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -42,6 +43,7 @@ onUnmounted(() => {
     <MyStory />
     <div id="img-banner-2"></div>
     <Explanation />
+    <Footer />
   </main>
 </template>
 
