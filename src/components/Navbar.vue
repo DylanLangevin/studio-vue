@@ -1,18 +1,53 @@
 <script setup lang="ts">
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 interface NavbarProps {
   isScrolled: boolean
 }
 const props = defineProps<NavbarProps>()
+
+const isMobile = computed(() => {
+  return window.innerWidth < 768
+})
+
+const isHidden = ref(false)
+let lastScrollPosition = 0
+
+const handleScroll = () => {
+  const currentScrollPosition = window.pageYOffset
+
+  if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+    isHidden.value = true
+  } else {
+    isHidden.value = false
+  }
+
+  lastScrollPosition = currentScrollPosition
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
   <main
     id="navbar"
     class="flex-center"
-    :class="{ 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled }"
+    :class="[
+      { 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled },
+      { 'navbar-hidden': isHidden }
+    ]"
   >
     <div id="navlink-section" class="flex-center">
-      <router-link class="navlinks" to="/"><h3>STUDIO BOUGIE</h3></router-link>
+      <router-link v-if="isMobile" class="navlinks" to="/"><div id="logo-icon"></div></router-link>
+      <router-link v-else class="navlinks" to="/"><h3>STUDIO BOUGIE</h3></router-link>
+      <!-- <div v-if="isMobile" id="navlink-section-right">
+        <div id="mobile-icon"></div>
+      </div> -->
       <div id="navlink-section-right">
         <router-link class="navlinks" to="/collection"><p>Collection</p></router-link>
         <router-link class="navlinks" to="/contact"><p>Contact</p></router-link>
@@ -37,7 +72,7 @@ const props = defineProps<NavbarProps>()
   height: 80px;
   width: 100%;
   z-index: 3;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 #navlink-section {
@@ -63,8 +98,48 @@ const props = defineProps<NavbarProps>()
   z-index: 12;
 }
 
+.position-fixed #logo-icon,
+.position-fixed #mobile-icon {
+  background-color: var(--vt-c-dark-green);
+}
+
 .position-absolute {
   color: white;
-  position: fixed;
+  position: absolute;
+}
+
+#mobile-icon {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
+
+#logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 300px;
+  background-color: white;
+}
+
+.navbar-hidden {
+  top: -80px;
+  transition: top 0.3s ease;
+}
+
+@media only screen and (max-width: 768px) {
+  #navlink-section {
+    margin: 0 20px;
+  }
+
+  #navbar {
+    height: 52px;
+    z-index: 300;
+    transition: all 0.3s ease;
+  }
+
+  #navlink-section-right {
+    display: flex;
+    gap: 10px;
+  }
 }
 </style>

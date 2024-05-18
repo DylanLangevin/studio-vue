@@ -62,4 +62,10 @@ const scrollToSection = (section: string) => {
   max-width: 70%;
   text-align: center;
 }
+/* 
+@media only screen and (max-width: 600px) {
+  #h1-title {
+    color: brown;
+  }
+} */
 </style>
