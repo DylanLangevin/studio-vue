@@ -80,4 +80,11 @@ onUnmounted(() => {
 #img-banner-2 {
   background-image: url('../../assets/img/7F94ABB3-3AAE-41E4-863E-102B0FF05D56.png');
 }
+
+@media only screen and (max-width: 768px) {
+  #img-banner,
+  #img-banner-2 {
+    height: 180px;
+  }
+}
 </style>

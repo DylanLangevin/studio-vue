@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import CandleCard from '../CandleCard.vue'
 
 import candles from '../../api/candles.js'
+import Button from '../../components/Button.vue'
+import { useRouter } from 'vue-router'
 
+const isMobile = computed(() => {
+  return window.innerWidth < 768
+})
+const router = useRouter() // Utiliser useRouter pour accéder au router
 const containerRef = ref<HTMLElement | null>(null)
 const leftPosition = ref(0)
+
+const redirectTo = (location: string) => {
+  router.push(location)
+}
 
 const handleScroll = (event: WheelEvent) => {
   if (containerRef.value) {
@@ -36,7 +46,9 @@ onUnmounted(() => {
       <div id="preview-content">
         <div id="preview-heading">
           <h3 id="h3-title">Petit aperçu de mes produits</h3>
-          <router-link id="p-see-more" to="/collection"><p>Voir tout</p></router-link>
+          <router-link v-if="!isMobile" id="p-see-more" to="/collection"
+            ><p>Voir tout</p></router-link
+          >
         </div>
         <div id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
@@ -45,6 +57,14 @@ onUnmounted(() => {
             :desc="candle.desc"
             v-for="candle in candles"
             v-bind:key="candle.id"
+          />
+        </div>
+        <div v-if="isMobile" id="btn-wrapper">
+          <Button
+            @click="redirectTo('/collection')"
+            class="btn"
+            :text="'Voir tous mes produits'"
+            :color="'green'"
           />
         </div>
       </div>
@@ -111,20 +131,21 @@ onUnmounted(() => {
     justify-content: start;
     align-items: start;
     height: fit-content;
-    padding: 70px 0px;
+    padding: 100px 0px;
   }
 
   #preview-content {
     min-width: 100vw;
     padding: 20px;
+    justify-content: center;
+  }
+
+  #preview-heading {
+    justify-content: center;
   }
 
   #preview-heading h3 {
     justify-content: space-around;
-  }
-
-  #preview-heading h3 {
-    width: 70%;
   }
 
   #cards-container {
@@ -144,6 +165,10 @@ onUnmounted(() => {
   #cards-container::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 10px;
+  }
+  #btn-wrapper {
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

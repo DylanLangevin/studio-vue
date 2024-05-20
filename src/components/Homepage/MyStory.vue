@@ -130,4 +130,28 @@ const scrollToSection = (section: string) => {
   margin-right: 20px;
   gap: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  #my-story-section {
+    padding: 100px 0;
+    height: fit-content;
+  }
+
+  #my-story-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #text-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+
+  #imgs-wrapper {
+    display: none;
+    align-items: center;
+  }
+}
 </style>
