@@ -36,7 +36,7 @@ onUnmounted(() => {
   <main id="homepage">
     <Navbar ref="scrollContainer" @scroll="handleScroll" :isScrolled="isScrolled" />
     <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
-    <Banner />
+    <!-- <Banner /> -->
     <Preview />
     <!-- <Banner /> -->
     <div id="img-banner"></div>

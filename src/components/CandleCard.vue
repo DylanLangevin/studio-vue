@@ -75,4 +75,15 @@ const cardStyle = computed(() => ({
 #card-desc p {
   font-size: 0.8rem;
 }
+
+@media only screen and (max-width: 768px) {
+  #preview-section {
+    justify-content: start;
+    align-items: start;
+  }
+  #card {
+    width: 193px;
+    height: 243px;
+  }
+}
 </style>

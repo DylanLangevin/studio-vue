@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed } from 'vue'
 interface NavbarProps {
   isScrolled: boolean
 }
@@ -8,39 +8,13 @@ const props = defineProps<NavbarProps>()
 const isMobile = computed(() => {
   return window.innerWidth < 768
 })
-
-const isHidden = ref(false)
-let lastScrollPosition = 0
-
-const handleScroll = () => {
-  const currentScrollPosition = window.pageYOffset
-
-  if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
-    isHidden.value = true
-  } else {
-    isHidden.value = false
-  }
-
-  lastScrollPosition = currentScrollPosition
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <template>
   <main
     id="navbar"
     class="flex-center"
-    :class="[
-      { 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled },
-      { 'navbar-hidden': isHidden }
-    ]"
+    :class="[{ 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled }]"
   >
     <div id="navlink-section" class="flex-center">
       <router-link v-if="isMobile" class="navlinks" to="/"><div id="logo-icon"></div></router-link>
@@ -71,7 +45,7 @@ onUnmounted(() => {
 #navbar {
   height: 80px;
   width: 100%;
-  z-index: 3;
+  z-index: 3000;
   transition: all 0.3s ease-in-out;
 }
 
@@ -121,10 +95,10 @@ onUnmounted(() => {
   background-color: white;
 }
 
-.navbar-hidden {
+/* .navbar-hidden {
   top: -80px;
   transition: top 0.3s ease;
-}
+} */
 
 @media only screen and (max-width: 768px) {
   #navlink-section {

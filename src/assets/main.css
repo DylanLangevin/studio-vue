@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* Optionnel : Inclure la marge intérieure et la marge extérieure dans le calcul de la taille */
-  overflow-x: hidden;
 }
 #app {
   z-index: -10;

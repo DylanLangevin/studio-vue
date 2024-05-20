@@ -1,8 +1,32 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import CandleCard from '../CandleCard.vue'
 
 import candles from '../../api/candles.js'
-import { onMounted } from 'vue'
+
+const containerRef = ref<HTMLElement | null>(null)
+const leftPosition = ref(0)
+
+const handleScroll = (event: WheelEvent) => {
+  if (containerRef.value) {
+    const scrollDistance = event.deltaY // distance de défilement de la molette de la souris
+    const currentScrollLeft = containerRef.value.scrollLeft
+    containerRef.value.scrollLeft = currentScrollLeft + scrollDistance
+    event.preventDefault() // Empêche le défilement de la page entière
+  }
+}
+
+onMounted(() => {
+  if (containerRef.value) {
+    containerRef.value.addEventListener('wheel', handleScroll)
+  }
+})
+
+onUnmounted(() => {
+  if (containerRef.value) {
+    containerRef.value.removeEventListener('wheel', handleScroll)
+  }
+})
 </script>
 
 <template>
@@ -14,7 +38,7 @@ import { onMounted } from 'vue'
           <h3 id="h3-title">Petit aperçu de mes produits</h3>
           <router-link id="p-see-more" to="/collection"><p>Voir tout</p></router-link>
         </div>
-        <div id="cards-container">
+        <div id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
             :title="candle.name"
             :img="candle.img"
@@ -50,8 +74,9 @@ import { onMounted } from 'vue'
 }
 
 #preview-content {
-  min-width: 1200px;
+  min-width: fit-content;
   z-index: 2;
+  position: relative;
 }
 
 #preview-heading {
@@ -78,5 +103,47 @@ import { onMounted } from 'vue'
   margin: 40px 0;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 960px) {
+  #preview-section {
+    justify-content: start;
+    align-items: start;
+    height: fit-content;
+    padding: 70px 0px;
+  }
+
+  #preview-content {
+    min-width: 100vw;
+    padding: 20px;
+  }
+
+  #preview-heading h3 {
+    justify-content: space-around;
+  }
+
+  #preview-heading h3 {
+    width: 70%;
+  }
+
+  #cards-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+  }
+
+  #cards-container::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  #cards-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
 }
 </style>
