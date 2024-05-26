@@ -100,7 +100,8 @@ const isMobile = computed(() => {
   transition: top 0.3s ease;
 } */
 
-@media only screen and (max-width: 768px) {
+/* Mobile */
+@media only screen and (max-width: 600px) {
   #navlink-section {
     margin: 0 20px;
   }
@@ -115,5 +116,9 @@ const isMobile = computed(() => {
     display: flex;
     gap: 10px;
   }
+}
+
+/* Tablettes */
+@media (min-width: 600px) and (max-width: 1024px) {
 }
 </style>

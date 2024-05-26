@@ -5,7 +5,7 @@
     <div id="footer-section">
       <div id="footer-content">
         <div class="footer-text-wrapper">
-          <h2>Information</h2>
+          <h2>Informations</h2>
           <div class="navlinks-wrapper">
             <router-link class="navlinks" to="/collection"><p>Mes produits</p></router-link>
             <router-link class="navlinks" to="/contact"><p>Me contacter</p></router-link>
@@ -59,5 +59,20 @@
 .footer-text-wrapper p {
   color: white;
   font-family: 'Open Sauce Sans';
+}
+
+@media only screen and (max-width: 600px) {
+  #footer-section {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    height: fit-content;
+  }
+
+  #footer-content {
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 10px 0;
+  }
 }
 </style>

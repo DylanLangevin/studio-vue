@@ -101,4 +101,45 @@ import Button from '../../components/Button.vue'
 #color-icon {
   background-image: url('../../assets/img/icons8-color-100_1.png');
 }
+
+@media only screen and (max-width: 600px) {
+  #icons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .icon-wrapper {
+    min-width: 250px;
+  }
+}
+
+/* Tablettes */
+@media (min-width: 600px) and (max-width: 1200px) {
+  #icons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0px 20px;
+  }
+  .icon-wrapper {
+    min-width: 200px;
+  }
+  #explanation-section h3 {
+    padding: 0 20px;
+  }
+}
+
+/* Mobile et Tablettes */
+@media (max-width: 1200px) {
+  #explanation-section {
+    padding: 100px 0;
+    height: fit-content;
+  }
+
+  #explanation-content {
+    width: 100%;
+    padding: 20px;
+  }
+}
 </style>

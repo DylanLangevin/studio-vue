@@ -63,9 +63,6 @@ onUnmounted(() => {
   height: 566px;
 }
 
-#story-section {
-}
-
 #img-banner,
 #img-banner-2 {
   background-size: cover;
@@ -80,11 +77,14 @@ onUnmounted(() => {
 #img-banner-2 {
   background-image: url('../../assets/img/7F94ABB3-3AAE-41E4-863E-102B0FF05D56.png');
 }
-
-@media only screen and (max-width: 768px) {
+/* Mobile */
+@media only screen and (max-width: 600px) {
   #img-banner,
   #img-banner-2 {
     height: 180px;
   }
+}
+/* Tablettes */
+@media (min-width: 600px) and (max-width: 1024px) {
 }
 </style>

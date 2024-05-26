@@ -76,7 +76,7 @@ const cardStyle = computed(() => ({
   font-size: 0.8rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   #preview-section {
     justify-content: start;
     align-items: start;
