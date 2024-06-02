@@ -9,5 +9,12 @@
   height: auto;
   z-index: -10001;
   position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+#router::-webkit-scrollbar {
+  display: none;
 }
 </style>

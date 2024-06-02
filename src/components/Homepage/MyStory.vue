@@ -64,7 +64,7 @@ const scrollToSection = (section: string) => {
 #my-story-section {
   background-color: var(--vt-c-dark-yellow);
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   padding: 100px;
   display: flex;
   justify-content: space-between;
@@ -126,7 +126,7 @@ const scrollToSection = (section: string) => {
   gap: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   #my-story-section {
     padding: 100px 0;
     height: fit-content;
@@ -150,11 +150,6 @@ const scrollToSection = (section: string) => {
     flex-direction: column;
   }
 
-  #imgs-wrapper {
-    display: none;
-    align-items: center;
-  }
-
   #btn-wrapper {
     justify-content: center;
     gap: 20px;
@@ -162,6 +157,11 @@ const scrollToSection = (section: string) => {
 
   .btn {
     margin: 20px 0 0 0;
+  }
+
+  #imgs-wrapper {
+    display: none;
+    align-items: center;
   }
 }
 

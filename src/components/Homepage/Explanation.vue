@@ -20,14 +20,16 @@ import Button from '../../components/Button.vue'
             <div class="icon" id="parfum-icon"></div>
             <p class="icon-text">Son parfum</p>
           </div>
-          <div class="icon-wrapper">
-            <div class="icon" id="contact-icon"></div>
-            <Button
-              @click="scrollToSection('preview-section')"
-              class="btn"
-              :text="'Commandez sur instagram'"
-              :color="'green'"
-            />
+          <div class="icon-btn-wrapper">
+            <div class="icon-wrapper">
+              <div class="icon" id="contact-icon"></div>
+              <Button
+                @click="scrollToSection('preview-section')"
+                class="btn"
+                :text="'Commandez sur instagram'"
+                :color="'green'"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +41,7 @@ import Button from '../../components/Button.vue'
 #explanation-section {
   background-color: var(--vt-c-dark-yellow);
   height: 50vh;
-  width: 100%;
+  width: 100vw;
   padding: 100px;
   display: flex;
   justify-content: center;
@@ -57,6 +59,10 @@ import Button from '../../components/Button.vue'
   gap: 50px;
 }
 
+#explanation-content h3 {
+  padding: 0px 20px;
+}
+
 #icons-wrapper {
   display: flex;
   gap: 30px;
@@ -64,7 +70,6 @@ import Button from '../../components/Button.vue'
 
 .icon-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
@@ -78,6 +83,8 @@ import Button from '../../components/Button.vue'
 
 .icon-wrapper p {
   margin: 10px 0px;
+  text-align: center;
+  width: 150px;
 }
 
 #contact-icon,
@@ -102,7 +109,8 @@ import Button from '../../components/Button.vue'
   background-image: url('../../assets/img/icons8-color-100_1.png');
 }
 
-@media only screen and (max-width: 600px) {
+/* 0 - 860px */
+@media only screen and (max-width: 860px) {
   #icons-wrapper {
     display: flex;
     flex-direction: column;
@@ -110,12 +118,38 @@ import Button from '../../components/Button.vue'
   }
 
   .icon-wrapper {
-    min-width: 250px;
+    min-width: 350px;
+  }
+  .icon {
+    width: 90px;
+    height: 90px;
   }
 }
 
-/* Tablettes */
-@media (min-width: 600px) and (max-width: 1200px) {
+/* 800 - 900 */
+@media (min-width: 800px) and (max-width: 900px) {
+  .icon {
+    width: 70px;
+    height: 70px;
+  }
+  #icons-wrapper {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .icon-wrapper p {
+    width: 150px;
+    word-wrap: break-word;
+  }
+}
+
+/* Tablettes 900 - 1200 */
+@media (min-width: 900px) and (max-width: 1200px) {
   #icons-wrapper {
     display: flex;
     justify-content: space-between;
@@ -130,7 +164,7 @@ import Button from '../../components/Button.vue'
   }
 }
 
-/* Mobile et Tablettes */
+/* 0 - 1200 */
 @media (max-width: 1200px) {
   #explanation-section {
     padding: 100px 0;
@@ -138,7 +172,6 @@ import Button from '../../components/Button.vue'
   }
 
   #explanation-content {
-    width: 100%;
     padding: 20px;
   }
 }

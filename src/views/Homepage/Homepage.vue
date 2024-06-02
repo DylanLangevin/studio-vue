@@ -69,7 +69,7 @@ onUnmounted(() => {
   background-position: center;
   background-repeat: no-repeat;
   height: 250px;
-  width: 100%;
+  width: 100vw;
 }
 #img-banner {
   background-image: url('../../assets/img/569ACEB2-B0F7-4C66-9A63-420E80480929.png');

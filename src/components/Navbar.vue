@@ -44,7 +44,7 @@ const isMobile = computed(() => {
 
 #navbar {
   height: 80px;
-  width: 100%;
+  width: 100vw;
   z-index: 3000;
   transition: all 0.3s ease-in-out;
 }

@@ -9,7 +9,7 @@ import { useRouter } from 'vue-router'
 const isMobile = computed(() => {
   return window.innerWidth < 768
 })
-const router = useRouter() // Utiliser useRouter pour accéder au router
+const router = useRouter()
 const containerRef = ref<HTMLElement | null>(null)
 const leftPosition = ref(0)
 
@@ -19,10 +19,10 @@ const redirectTo = (location: string) => {
 
 const handleScroll = (event: WheelEvent) => {
   if (containerRef.value) {
-    const scrollDistance = event.deltaY // distance de défilement de la molette de la souris
+    const scrollDistance = event.deltaY
     const currentScrollLeft = containerRef.value.scrollLeft
     containerRef.value.scrollLeft = currentScrollLeft + scrollDistance
-    event.preventDefault() // Empêche le défilement de la page entière
+    event.preventDefault()
   }
 }
 
@@ -73,19 +73,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* #bcg-green {
-  width: 25%;
-  height: 566px;
-  position: absolute;
-  right: 0;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-  background-color: var(--vt-c-dark-green);
-} */
-
 #preview-section {
   height: 800px;
-  width: 100%;
+  width: 100vw;
   background-color: var(--vt-c-dark-yellow);
   display: flex;
   justify-content: center;

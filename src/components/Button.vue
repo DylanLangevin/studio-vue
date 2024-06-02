@@ -13,6 +13,10 @@ const props = defineProps<ButtonProps>()
 </template>
 
 <style scoped>
+p {
+  text-align: center;
+}
+
 #button {
   border: none;
   width: fit-content;

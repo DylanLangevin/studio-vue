@@ -23,6 +23,7 @@
 <style scoped>
 #footer-section {
   height: 228px;
+  width: 100vw;
   background-color: black;
   display: flex;
   justify-content: center;
