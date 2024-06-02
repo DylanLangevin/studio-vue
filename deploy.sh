@@ -10,6 +10,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:dylanlangevin/studio-vue.git main:gh-pages
+# Correction: Push directly to the gh-pages branch
+git push -f git@github.com:dylanlangevin/studio-vue.git HEAD:gh-pages
 
 cd -
