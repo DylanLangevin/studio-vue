@@ -3,6 +3,7 @@
 
 npm run build
 
+cp -r src/assets/img dist/assets/
 
 cd dist
 
