@@ -1,15 +1,18 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-set -e
 
 npm run build
 
+
 cd dist
+
 
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m "deploy"
 
-git push -f git@github.com:dylanlangevin/studio-vue.git main:gh-pages
+
+git push -f git@github.com:DylanLangevin/studio-vue.git master:gh-pages
+
 
 cd -
