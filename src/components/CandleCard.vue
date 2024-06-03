@@ -11,7 +11,7 @@ interface CandleCardProps {
 }
 const props = defineProps<CandleCardProps>()
 
-const image = props.img.toLocaleUpperCase()
+const image = props.img
 
 const cardStyle = computed(() => ({
   backgroundImage: `url(${image})`,
