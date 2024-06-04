@@ -1,12 +1,35 @@
 <script setup lang="ts">
 import Button from '../Button.vue'
-import { defineEmits } from 'vue'
+import { defineEmits, onMounted, onUnmounted, ref } from 'vue'
+import ScrollParallax from 'vue3-parallax/src/components/ScrollParallax.vue'
+
+import {} from 'vue'
 
 const emits = defineEmits(['scrollToSection'])
 
 const scrollToSection = (section: string) => {
   emits('scrollToSection', section)
 }
+
+const isScrolled = ref(false)
+const scrollTop = ref(0)
+let translateValue1 = ref(55)
+let translateValue2 = ref(30)
+const handleScroll = () => {
+  scrollTop.value = document.documentElement.scrollTop
+  isScrolled.value = scrollTop.value > 850
+  translateValue1.value = -55 + scrollTop.value / 14
+  translateValue2.value = -30 + scrollTop.value / 14
+  console.log(scrollTop.value, translateValue1.value)
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
@@ -15,20 +38,34 @@ const scrollToSection = (section: string) => {
       <div id="my-story-content">
         <div id="imgs-wrapper">
           <div id="first-img-wrapper">
-            <img id="first-img" src="../../assets/img/IMG_0327_2.png" alt="" class="img" />
+            <div id="first-img-wrapper">
+              <img
+                id="first-img"
+                src="../../assets/img/IMG_0327_2.png"
+                alt=""
+                class="img"
+                :style="{ transform: `translateY(${translateValue1}px)` }"
+              />
+            </div>
+            <div id="third-img-wrapper">
+              <img
+                id="third-img"
+                src="../../assets/img/9CEE5C54-5045-44D8-B17C-813D073E50C6.png"
+                alt=""
+                class="img"
+                :style="{ transform: `translateY(${translateValue1}px)` }"
+              />
+            </div>
+          </div>
+          <div id="second-img-wrapper">
             <img
-              id="third-img"
-              src="../../assets/img/9CEE5C54-5045-44D8-B17C-813D073E50C6.png"
+              id="second-img"
+              src="../../assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
               alt=""
               class="img"
+              :style="{ transform: `translateY(${translateValue2}px)` }"
             />
           </div>
-          <img
-            id="second-img"
-            src="../../assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
-            alt=""
-            class="img"
-          />
         </div>
         <div id="text-wrapper">
           <h3>Mon Histoire</h3>
@@ -101,17 +138,63 @@ const scrollToSection = (section: string) => {
   margin-right: 20px;
 }
 
-#first-img {
+/* #first-img {
   width: 250px;
   height: 250px;
+} */
+#first-img {
+  width: 290px;
+  height: 290px;
+  position: relative;
+  top: -25%;
+  z-index: 234;
+}
+
+#first-img-wrapper {
+  width: 250px;
+  height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 #second-img {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  top: -30%;
+  z-index: 234;
+}
+
+#second-img-wrapper {
   width: 260px;
   height: 348px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 #third-img {
+  width: 310px;
+  height: 310px;
+  position: relative;
+  top: -30%;
+  z-index: 234;
+}
+
+#third-img-wrapper {
   width: 200px;
   height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .img {
@@ -166,9 +249,6 @@ const scrollToSection = (section: string) => {
 }
 
 @media (min-width: 600px) and (max-width: 900px) {
-  /* #imgs-wrapper {
-    max-width: 200px;
-  } */
   #first-img {
     width: 141px;
     height: 141px;
@@ -184,9 +264,6 @@ const scrollToSection = (section: string) => {
 }
 
 @media (min-width: 900px) and (max-width: 1200px) {
-  /* #imgs-wrapper {
-    max-width: 200px;
-  } */
   #first-img {
     width: 179px;
     height: 179px;
@@ -203,9 +280,6 @@ const scrollToSection = (section: string) => {
 
 /* Tablettes */
 @media (min-width: 600px) and (max-width: 1200px) {
-  /* #imgs-wrapper {
-    max-width: 200px;
-  } */
   #text-wrapper {
     width: 100%;
     padding: 0px 20px;

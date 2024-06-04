@@ -133,4 +133,14 @@ function redirectTo(location: string) {
     height: 45px;
   }
 }
+@media only screen and (min-width: 1600px) {
+  #footer-section {
+    height: 568px;
+  }
+
+  #footer-content {
+    justify-content: center;
+    gap: 100px;
+  }
+}
 </style>
