@@ -109,7 +109,6 @@ function redirectTo(location: string) {
 @media only screen and (max-width: 600px) {
   #footer-section {
     padding: 50px 0;
-    margin-bottom: 20px;
     height: fit-content;
   }
 
