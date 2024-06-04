@@ -1,19 +1,35 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const contactInstagram = import.meta.env.VITE_CONTACT_INSTAGRAM
+const contactFacebook = import.meta.env.VITE_CONTACT_FACEBOOK
+const contactThreads = import.meta.env.VITE_CONTACT_THREADS
+
+function redirectTo(location: string) {
+  window.open(location, '_blank')
+}
+</script>
 
 <template>
   <main>
     <div id="footer-section">
       <div id="footer-content">
         <div class="footer-text-wrapper">
-          <h2>Informations</h2>
+          <h3>Informations</h3>
           <div class="navlinks-wrapper">
             <router-link class="navlinks" to="/collection"><p>Mes produits</p></router-link>
             <router-link class="navlinks" to="/contact"><p>Me contacter</p></router-link>
           </div>
         </div>
         <div class="footer-text-wrapper">
-          <h2>Réseaux Sociaux</h2>
-          <div id="instagram-icon"></div>
+          <h3>Suivez moi</h3>
+          <div id="contact-icons">
+            <div
+              @click="redirectTo(contactInstagram)"
+              class="contact-icon"
+              id="instagram-icon"
+            ></div>
+            <div @click="redirectTo(contactFacebook)" class="contact-icon" id="facebook-icon"></div>
+            <div @click="redirectTo(contactThreads)" class="contact-icon" id="threads-icon"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +49,7 @@
 #footer-content {
   padding: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 80%;
 }
 
@@ -41,13 +57,30 @@
   color: white;
 }
 
+#instagram-icon,
+#facebook-icon,
+#threads-icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 #instagram-icon {
   background-image: url('../assets/img/icons8-instagram_1.png');
   width: 45px;
   height: 45px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+#facebook-icon {
+  background-image: url('../assets/img/icons8-facebook-50.png');
+  width: 42px;
+  height: 42px;
+}
+
+#threads-icon {
+  background-image: url('../assets/img/icons8-fils-de-discussion-48.png');
+  width: 50px;
+  height: 50px;
 }
 
 .footer-text-wrapper {
@@ -56,24 +89,49 @@
   gap: 20px;
 }
 
-.footer-text-wrapper h2,
+.footer-text-wrapper h3,
 .footer-text-wrapper p {
   color: white;
   font-family: 'Open Sauce Sans';
 }
 
+#contact-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   #footer-section {
-    padding: 20px 0;
+    padding: 50px 0;
     margin-bottom: 20px;
     height: fit-content;
   }
 
   #footer-content {
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 20px;
-    padding: 10px 0;
+    padding: 10px;
+  }
+
+  #instagram-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  #facebook-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  #threads-icon {
+    width: 45px;
+    height: 45px;
   }
 }
 </style>

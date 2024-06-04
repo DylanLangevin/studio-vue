@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import Button from '../../components/Button.vue'
+
+function redirectTo() {
+  window.open(import.meta.env.VITE_CONTACT_INSTAGRAM, '_blank')
+}
 </script>
 
 <template>
@@ -24,7 +28,7 @@ import Button from '../../components/Button.vue'
             <div class="icon-wrapper">
               <div class="icon" id="contact-icon"></div>
               <Button
-                @click="scrollToSection('preview-section')"
+                @click="redirectTo()"
                 class="btn"
                 :text="'Commandez sur instagram'"
                 :color="'green'"
@@ -121,8 +125,8 @@ import Button from '../../components/Button.vue'
     min-width: 350px;
   }
   .icon {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -161,6 +165,11 @@ import Button from '../../components/Button.vue'
   }
   #explanation-section h3 {
     padding: 0 20px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
   }
 }
 
