@@ -2,7 +2,7 @@
 import Navbar from '../../components/Navbar.vue'
 import Heroic from '../../components/Homepage/Heroic.vue'
 import Preview from '../../components/Homepage/Preview.vue'
-import Banner from '../../components/Homepage/Banner.vue'
+// import Banner from '../../components/Homepage/Banner.vue'
 import MyStory from '../../components/Homepage/MyStory.vue'
 import Explanation from '../../components/Homepage/Explanation.vue'
 import Footer from '../../components/Footer.vue'
@@ -17,8 +17,8 @@ let translateValue1 = ref(199)
 const handleScroll = () => {
   scrollTop.value = document.documentElement.scrollTop
   isScrolled.value = scrollTop.value > 850
-  translateValue.value = -200 + scrollTop.value / 4
-  translateValue1.value = -199 + scrollTop.value / 4
+  translateValue.value = -200 + scrollTop.value / 5
+  translateValue1.value = -199 + scrollTop.value / 5
   console.log(scrollTop.value, translateValue)
 }
 
@@ -40,7 +40,7 @@ onUnmounted(() => {
 
 <template>
   <main id="homepage">
-    <Navbar ref="scrollContainer" @scroll="handleScroll" :isScrolled="isScrolled" />
+    <Navbar ref="scrollContainer" :isScrolled="isScrolled" />
     <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
 
     <Preview />
@@ -70,8 +70,8 @@ onUnmounted(() => {
 
 <style scoped>
 #homepage {
-  height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 #heroic-section {
@@ -84,190 +84,46 @@ onUnmounted(() => {
   height: 566px;
 }
 
-#img-banner-test {
-  margin-bottom: 300px;
-}
-
-#img-banner-test img {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-}
-
 #img-banner {
-  z-index: 2;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
-  position: relative;
-  top: -1250px;
+  width: 100%;
+  height: 600px; /* Hauteur souhaitée */
+  object-fit: cover; /* Couvre l'espace sans changer la résolution */
+  object-position: center; /* Centre l'image en haut */
+  position: absolute;
+  top: -350px;
 }
 
 #img-banner-2 {
-  z-index: -2;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
+  height: 600px; /* Hauteur souhaitée */
+  object-fit: cover; /* Couvre l'espace sans changer la résolution */
+  object-position: center; /* Centre l'image en haut */
   position: absolute;
-  top: -1000px;
+  top: -400px;
 }
 
 .banner-filter {
   position: relative;
   z-index: -1;
-  height: 300px;
+  height: 300px; /* Hauteur souhaitée */
+  background-color: var(--vt-c-dark-yellow);
 }
 
-#homepage {
-  overflow: hidden;
+@media (max-width: 800px) {
+  #img-banner {
+    top: -280px;
+  }
+  .banner-filter {
+    height: 180px;
+  }
 }
 
-/* Mobile */
-@media only screen and (max-width: 400px) {
+@media (min-width: 800px) and (max-width: 1000px) {
   #img-banner {
     top: -300px;
   }
   #img-banner-2 {
     top: -400px;
-    background-image: url('../../assets/img/7F94ABB3-3AAE-41E4-863E-102B0FF05D561111111.png');
-  }
-  .banner-filter {
-    height: 120px;
-  }
-}
-/* Mobile */
-@media (min-width: 400px) and (max-width: 500px) {
-  #img-banner {
-    top: -400px;
-  }
-  #img-banner-2 {
-    top: -420px;
-  }
-  .banner-filter {
-    height: 180px;
-  }
-}
-/* Mobile */
-@media (min-width: 500px) and (max-width: 600px) {
-  #img-banner {
-    top: -480px;
-  }
-  #img-banner-2 {
-    top: -420px;
-  }
-  .banner-filter {
-    height: 180px;
-  }
-}
-/* Mobile */
-@media (min-width: 600px) and (max-width: 800px) {
-  #img-banner {
-    top: -550px;
-  }
-  #img-banner-2 {
-    top: -480px;
-  }
-}
-
-@media (min-width: 800px) and (max-width: 900px) {
-  #img-banner {
-    top: -700px;
-  }
-  #img-banner-2 {
-    top: -500px;
-  }
-  .banner-filter {
-    height: 200px;
-  }
-}
-@media (min-width: 900px) and (max-width: 1024px) {
-  #img-banner {
-    top: -800px;
-  }
-  #img-banner-2 {
-    top: -670px;
-  }
-  .banner-filter {
-    height: 200px;
-  }
-}
-
-@media (min-width: 1024px) {
-  #img-banner {
-    top: -950px;
-  }
-  #img-banner-2 {
-    top: -700px;
-  }
-  .banner-filter {
-    height: 200px;
-  }
-}
-
-@media (min-width: 1024px) {
-  #img-banner {
-    top: -900px;
-  }
-  #img-banner-2 {
-    top: -620px;
-  }
-}
-
-@media (min-width: 1124px) {
-  #img-banner {
-    top: -900px;
-  }
-  #img-banner-2 {
-    top: -680px;
-  }
-}
-
-@media (min-width: 1224px) {
-  #img-banner {
-    top: -1050px;
-  }
-  #img-banner-2 {
-    top: -850px;
-  }
-}
-
-@media (min-width: 1424px) {
-  #img-banner {
-    top: -1180px;
-  }
-  #img-banner-2 {
-    top: -950px;
-  }
-}
-
-@media (min-width: 1524px) {
-  #img-banner {
-    top: -1220px;
-  }
-  #img-banner-2 {
-    top: -900px;
-  }
-}
-@media (min-width: 1624px) {
-  #img-banner {
-    top: -1380px;
-  }
-  #img-banner-2 {
-    top: -950px;
-  }
-  .banner-filter {
-    height: 400px;
-  }
-}
-@media (min-width: 1824px) {
-  #img-banner {
-    top: -1480px;
-  }
-  #img-banner-2 {
-    top: -1000px;
   }
 }
 </style>
