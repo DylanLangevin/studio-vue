@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '../../components/Button.vue'
+import Button from '@/components/Button.vue'
 
 function redirectTo() {
   window.open(import.meta.env.VITE_CONTACT_INSTAGRAM, '_blank')
@@ -101,16 +101,16 @@ function redirectTo() {
 }
 
 #contact-icon {
-  background-image: url('../../assets/img/icons8-instagram-100_1.png');
+  background-image: url('@/assets/img/icons8-instagram-100_1.png');
 }
 #candle-icon {
-  background-image: url('../../assets/img/icons8-candle-100_1.png');
+  background-image: url('@/assets/img/icons8-candle-100_1.png');
 }
 #parfum-icon {
-  background-image: url('../../assets/img/icons8-wind-64_1.png');
+  background-image: url('@/assets/img/icons8-wind-64_1.png');
 }
 #color-icon {
-  background-image: url('../../assets/img/icons8-color-100_1.png');
+  background-image: url('@/assets/img/icons8-color-100_1.png');
 }
 
 /* 0 - 860px */

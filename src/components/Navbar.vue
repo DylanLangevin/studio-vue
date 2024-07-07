@@ -17,8 +17,7 @@ const isMobile = computed(() => {
     :class="[{ 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled }]"
   >
     <div id="navlink-section" class="flex-center">
-      <router-link v-if="isMobile" class="navlinks" to="/"><div id="logo-icon"></div></router-link>
-      <router-link v-else class="navlinks" to="/"><h3>STUDIO BOUGIE</h3></router-link>
+      <router-link class="navlinks" to="/"><div id="logo-icon"></div></router-link>
       <!-- <div v-if="isMobile" id="navlink-section-right">
         <div id="mobile-icon"></div>
       </div> -->
@@ -72,11 +71,6 @@ const isMobile = computed(() => {
   z-index: 12;
 }
 
-.position-fixed #logo-icon,
-.position-fixed #mobile-icon {
-  background-color: var(--vt-c-dark-green);
-}
-
 .position-absolute {
   color: white;
   position: absolute;
@@ -85,14 +79,17 @@ const isMobile = computed(() => {
 #mobile-icon {
   width: 30px;
   height: 30px;
-  background-color: white;
 }
 
 #logo-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 300px;
-  background-color: white;
+  margin-top: 30px;
+  width: 100px;
+  height: 100px;
+  background-image: url('../assets/img/logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
 }
 
 /* .navbar-hidden {

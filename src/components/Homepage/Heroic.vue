@@ -31,7 +31,7 @@ const scrollToSection = (section: string) => {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url('../../assets/img/858BFC24-970F-4BB3-8A3F-F1872AB87898.png');
+    url('@/assets/img/858BFC24-970F-4BB3-8A3F-F1872AB87898.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

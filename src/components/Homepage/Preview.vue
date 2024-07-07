@@ -2,8 +2,8 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import CandleCard from '../CandleCard.vue'
 
-import candles from '../../api/candles.js'
-import Button from '../../components/Button.vue'
+import candles from '@/api/candles.js'
+import Button from '@/components/Button.vue'
 import { useRouter } from 'vue-router'
 
 const isMobile = computed(() => {

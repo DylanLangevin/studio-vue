@@ -20,7 +20,6 @@ const handleScroll = () => {
   isScrolled.value = scrollTop.value > 850
   translateValue1.value = -55 + scrollTop.value / 14
   translateValue2.value = -30 + scrollTop.value / 14
-  console.log(scrollTop.value, translateValue1.value)
 }
 
 onMounted(() => {
@@ -37,11 +36,11 @@ onUnmounted(() => {
     <div id="my-story-section">
       <div id="my-story-content">
         <div id="imgs-wrapper">
-          <div id="first-img-wrapper">
+          <div id="first-imgs-wrapper">
             <div id="first-img-wrapper">
               <img
                 id="first-img"
-                src="../../assets/img/IMG_0327_2.png"
+                src="@/assets/img/IMG_0327_2.png"
                 alt=""
                 class="img"
                 :style="{ transform: `translateY(${translateValue1}px)` }"
@@ -50,7 +49,7 @@ onUnmounted(() => {
             <div id="third-img-wrapper">
               <img
                 id="third-img"
-                src="../../assets/img/9CEE5C54-5045-44D8-B17C-813D073E50C6.png"
+                src="@/assets/img/9CEE5C54-5045-44D8-B17C-813D073E50C6.png"
                 alt=""
                 class="img"
                 :style="{ transform: `translateY(${translateValue1}px)` }"
@@ -60,7 +59,7 @@ onUnmounted(() => {
           <div id="second-img-wrapper">
             <img
               id="second-img"
-              src="../../assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
+              src="@/assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
               alt=""
               class="img"
               :style="{ transform: `translateY(${translateValue2}px)` }"
@@ -138,22 +137,24 @@ onUnmounted(() => {
   margin-right: 20px;
 }
 
-/* #first-img {
-  width: 250px;
-  height: 250px;
-} */
 #first-img {
   width: 290px;
   height: 290px;
   position: relative;
   top: -25%;
+  left: 10%;
   z-index: 234;
+}
+
+#first-imgs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 #first-img-wrapper {
   width: 250px;
   height: 250px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,12 +190,13 @@ onUnmounted(() => {
 #third-img-wrapper {
   width: 200px;
   height: 200px;
-
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 16px;
   overflow: hidden;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .img {
@@ -209,7 +211,7 @@ onUnmounted(() => {
   gap: 20px;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 880px) {
   #my-story-section {
     padding: 100px 0;
     height: fit-content;
@@ -250,16 +252,33 @@ onUnmounted(() => {
 
 @media (min-width: 600px) and (max-width: 900px) {
   #first-img {
-    width: 141px;
-    height: 141px;
+    width: 179px;
+    height: 179px;
+    left: 0%;
+    top: -25%;
   }
+
   #second-img {
-    width: 147px;
-    height: 197px;
+    width: 187px;
+    height: 250px;
   }
+  #second-img-wrapper {
+    width: 200px;
+    margin-top: 60px;
+  }
+
   #third-img {
-    width: 117px;
-    height: 117px;
+    width: 200px;
+    height: 250px;
+  }
+  #third-img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin-top: 0;
+  }
+
+  #first-img-wrapper {
+    width: 200px;
   }
 }
 
@@ -267,14 +286,31 @@ onUnmounted(() => {
   #first-img {
     width: 179px;
     height: 179px;
+    left: 0%;
+    top: -25%;
   }
+
   #second-img {
     width: 187px;
     height: 250px;
   }
+  #second-img-wrapper {
+    width: 200px;
+    margin-top: 60px;
+  }
+
   #third-img {
-    width: 149px;
-    height: 149px;
+    width: 200px;
+    height: 250px;
+  }
+  #third-img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin-top: 0;
+  }
+
+  #first-img-wrapper {
+    width: 200px;
   }
 }
 
