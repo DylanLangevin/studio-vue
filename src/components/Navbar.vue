@@ -24,6 +24,11 @@ const isMobile = computed(() => {
       <div id="navlink-section-right">
         <router-link class="navlinks" to="/collection"><p>Collection</p></router-link>
         <router-link class="navlinks" to="/contact"><p>Contact</p></router-link>
+        <router-link class="navlinks" to="/basket"
+          ><div
+            :class="[{ 'basket-icon': props.isScrolled, 'basket-icon-fixed': !props.isScrolled }]"
+          ></div
+        ></router-link>
       </div>
     </div>
   </main>
@@ -90,6 +95,22 @@ const isMobile = computed(() => {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1000;
+}
+.basket-icon {
+  background-image: url('../assets/img/icons8-panier-1-96.png');
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.basket-icon-fixed {
+  background-image: url('../assets/img/icons8-panier-2-96.png');
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* .navbar-hidden {
