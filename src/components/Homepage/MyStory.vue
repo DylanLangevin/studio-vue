@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import Button from '../Button.vue'
 import { defineEmits, onMounted, onUnmounted, ref } from 'vue'
-import ScrollParallax from 'vue3-parallax/src/components/ScrollParallax.vue'
-
-import {} from 'vue'
 
 const emits = defineEmits(['scrollToSection'])
 
@@ -80,7 +77,7 @@ onUnmounted(() => {
             <Button
               @click="scrollToSection('preview-section')"
               class="btn"
-              :text="'Button'"
+              :text="'Me contacter sur mes réseaux'"
               :color="'green'"
             />
             <Button

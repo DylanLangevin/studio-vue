@@ -2,18 +2,18 @@
 import Navbar from '@/components/Navbar.vue'
 import Heroic from '@/components/Homepage/Heroic.vue'
 import Preview from '@/components/Homepage/Preview.vue'
-// import Banner from '@/components/Homepage/Banner.vue'
 import MyStory from '@/components/Homepage/MyStory.vue'
 import Explanation from '@/components/Homepage/Explanation.vue'
 import Footer from '@/components/Footer.vue'
-// import ScrollParallax from 'vue3-parallax/src/components/ScrollParallax.vue'
 
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const isScrolled = ref(false)
 const scrollTop = ref(0)
+
 let translateValueImg1 = ref(200)
 let translateValueImg2 = ref(199)
+
 const handleScroll = () => {
   scrollTop.value = document.documentElement.scrollTop
   isScrolled.value = scrollTop.value > 850
@@ -85,18 +85,18 @@ onUnmounted(() => {
 
 #img-banner {
   width: 100%;
-  height: 600px; /* Hauteur souhaitée */
-  object-fit: cover; /* Couvre l'espace sans changer la résolution */
-  object-position: center; /* Centre l'image en haut */
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
   position: absolute;
   top: -350px;
 }
 
 #img-banner-2 {
   width: 100%;
-  height: 600px; /* Hauteur souhaitée */
-  object-fit: cover; /* Couvre l'espace sans changer la résolution */
-  object-position: center; /* Centre l'image en haut */
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
   position: absolute;
   top: -400px;
 }
@@ -104,7 +104,7 @@ onUnmounted(() => {
 .banner-filter {
   position: relative;
   z-index: -1;
-  height: 300px; /* Hauteur souhaitée */
+  height: 300px;
   background-color: var(--vt-c-dark-yellow);
 }
 

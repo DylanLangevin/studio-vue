@@ -4,20 +4,27 @@ import { computed, ref } from 'vue'
 
 const descActive = ref(false)
 
-interface CandleCardProps {
+export interface CandleCardProps {
+  id: number
   title: String
   img: String
   desc: String
+  width: String
+  height: String
 }
 const props = defineProps<CandleCardProps>()
 
 const image = props.img
+const width = props.width
+const height = props.height
 
 const cardStyle = computed(() => ({
   backgroundImage: `url(${image})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat'
+  backgroundRepeat: 'no-repeat',
+  width: width,
+  height: height
 }))
 </script>
 
@@ -33,7 +40,7 @@ const cardStyle = computed(() => ({
       <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
 
       <div v-if="descActive" id="card-desc">
-        <p>{{ props.desc }} eee</p>
+        <p v-html="props.desc"></p>
       </div>
     </div>
   </main>
@@ -41,8 +48,6 @@ const cardStyle = computed(() => ({
 
 <style scoped>
 #card {
-  width: 281px;
-  height: 353px;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -64,16 +69,18 @@ const cardStyle = computed(() => ({
 }
 
 #card-desc {
-  background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   z-index: 2;
   padding: 20px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+  transition-delay: 1s;
+  transition-property: width;
 }
 
 #card-desc p {
   font-size: 0.8rem;
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
