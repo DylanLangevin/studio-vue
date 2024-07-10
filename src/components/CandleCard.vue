@@ -9,23 +9,33 @@ export interface CandleCardProps {
   title: String
   img: String
   desc: String
-  width: String
-  height: String
+  width: String | null
+  height: String | null
+  showDesc: Boolean
 }
 const props = defineProps<CandleCardProps>()
+
+const isMobile = computed(() => {
+  return window.innerWidth < 768
+})
 
 const image = props.img
 const width = props.width
 const height = props.height
+const shouldShowDesc = props.showDesc ? true : false
 
 const cardStyle = computed(() => ({
   backgroundImage: `url(${image})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  width: width,
-  height: height
+  width: width ? width : '281px',
+  height: height ? height : '353px'
 }))
+
+const addToBasket = (candleId: number) => {
+  console.log(candleId)
+}
 </script>
 
 <template>
@@ -36,12 +46,21 @@ const cardStyle = computed(() => ({
       :style="cardStyle"
       id="card"
     >
-      <div :class="{ 'card-header': descActive }">
+      <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
         <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
-        <span class="icon" :class="{ 'is-visible': descActive }"></span>
+        <span
+          v-if="shouldShowDesc"
+          @click="addToBasket(props.id)"
+          class="icon"
+          :class="{ 'is-visible': descActive || isMobile }"
+        ></span>
       </div>
 
-      <div :class="{ 'is-visible': descActive }" class="card-desc">
+      <div
+        v-if="shouldShowDesc"
+        :class="{ 'is-visible': descActive || isMobile }"
+        class="card-desc"
+      >
         <p v-html="props.desc"></p>
       </div>
     </div>
@@ -59,6 +78,8 @@ const cardStyle = computed(() => ({
   position: relative;
   z-index: 20;
   overflow: visible;
+  width: 281px;
+  height: 353px;
 }
 
 .card-header {
@@ -70,18 +91,23 @@ const cardStyle = computed(() => ({
 .icon {
   width: 30px;
   height: 30px;
-  background-color: aliceblue;
   opacity: 0;
   transition: opacity 0.3s ease;
+  background-image: url('../assets/img/icons8-ajouter-un-panier-30.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 5px;
+}
+
+.icon:hover {
+  cursor: pointer;
+  padding: 10px;
 }
 
 .is-visible {
   opacity: 1;
   transition: opacity 0.3s ease;
-}
-
-#card:hover {
-  cursor: pointer;
 }
 
 #card-title {
@@ -110,9 +136,10 @@ const cardStyle = computed(() => ({
     justify-content: start;
     align-items: start;
   }
-  #card {
-    width: 193px;
-    height: 243px;
+}
+@media only screen and (max-width: 800px) {
+  .card-header {
+    gap: 30px;
   }
 }
 </style>

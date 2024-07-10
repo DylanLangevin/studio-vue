@@ -16,6 +16,7 @@ const candles = [
     { id: 12, name: 'Bougie', img: img1, desc: 'blablablablabla' },
 ]
 
+
 export default candles;
 
 // const imagePaths = [

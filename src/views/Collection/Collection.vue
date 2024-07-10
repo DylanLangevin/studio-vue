@@ -16,14 +16,13 @@ import candles from '@/api/candles.js'
       <div id="cards-container">
         <CandleCard
           class="card"
-          :id="candles.id"
+          :id="candle.id"
           :title="candle.name"
           :img="candle.img"
           :desc="candle.desc"
           v-for="candle in candles"
           v-bind:key="candle.id"
-          :width="'281px'"
-          :height="'353px'"
+          :showDesc="true"
         />
       </div>
     </div>
@@ -45,13 +44,13 @@ import candles from '@/api/candles.js'
   background-color: var(--vt-c-dark-yellow);
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 50px;
 }
 
 #h3-title {
   color: var(--vt-c-dark-green);
-  margin-left: 100px;
 }
 
 #cards-container {

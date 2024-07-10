@@ -62,8 +62,8 @@ onUnmounted(() => {
             :desc="candle.desc"
             v-for="candle in previewCandles"
             v-bind:key="candle.id"
-            :width="'281px'"
-            :height="'353px'"
+            class="test"
+            :showDesc="true"
           />
         </div>
         <div v-if="isMobile" id="btn-wrapper">
