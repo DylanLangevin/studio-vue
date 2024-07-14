@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface ButtonProps {
-  text: String
-  color: String
+  text: string
+  color: string
 }
 const props = defineProps<ButtonProps>()
 </script>

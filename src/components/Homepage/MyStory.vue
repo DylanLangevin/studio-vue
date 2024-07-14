@@ -75,16 +75,16 @@ onUnmounted(() => {
           </p>
           <div id="btn-wrapper">
             <Button
-              @click="scrollToSection('preview-section')"
               class="btn"
               :text="'Me contacter sur mes réseaux'"
               :color="'green'"
+              @click="scrollToSection('preview-section')"
             />
             <Button
-              @click="scrollToSection('preview-section')"
               class="btn"
               :text="'Button'"
               :color="'green'"
+              @click="scrollToSection('preview-section')"
             />
           </div>
         </div>

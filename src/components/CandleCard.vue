@@ -6,12 +6,17 @@ const descActive = ref(false)
 
 export interface CandleCardProps {
   id: number
-  title: String
-  img: String
-  desc: String
-  width: String | null
-  height: String | null
-  showDesc: Boolean
+  title: string
+  img: string
+  desc: string
+  width: string | null
+  height: string | null
+  candleSizeWidth: number
+  candleSizeHeight: number
+  scentPrice: number
+  colorPrice: number
+  weight: number
+  showDesc: boolean
 }
 const props = defineProps<CandleCardProps>()
 
@@ -35,24 +40,25 @@ const cardStyle = computed(() => ({
 
 const addToBasket = (candleId: number) => {
   console.log(candleId)
+  console.log(props)
 }
 </script>
 
 <template>
   <main>
     <div
+      id="card"
+      :style="cardStyle"
       @mouseover="descActive = true"
       @mouseleave="descActive = false"
-      :style="cardStyle"
-      id="card"
     >
       <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
         <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
         <span
           v-if="shouldShowDesc"
-          @click="addToBasket(props.id)"
           class="icon"
           :class="{ 'is-visible': descActive || isMobile }"
+          @click="addToBasket(props.id)"
         ></span>
       </div>
 
@@ -61,7 +67,12 @@ const addToBasket = (candleId: number) => {
         :class="{ 'is-visible': descActive || isMobile }"
         class="card-desc"
       >
-        <p v-html="props.desc"></p>
+        <p>
+          Taille en cm (sans la mèche) {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
+        </p>
+        <p>{{ props.weight }} grammes de cire de Soja</p>
+        <p>+ {{ props.scentPrice }}€ pour l'ajout d'un parfum</p>
+        <p>+ {{ props.colorPrice }}€ pour l'ajout d'une couleur</p>
       </div>
     </div>
   </main>

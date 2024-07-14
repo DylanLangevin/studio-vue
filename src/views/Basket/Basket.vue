@@ -5,7 +5,7 @@ import CandleCard from '../../components/CandleCard.vue'
 import Button from '@/components/Button.vue'
 import basket from '@/api/basket.js'
 
-const log = (info: String) => {
+const log = (info: string) => {
   console.log(info)
 }
 
@@ -14,29 +14,39 @@ console.log(basket)
 
 <template>
   <main id="basket">
-    <Navbar ref="scrollContainer" :isScrolled="true" id="navbar" />
-    <div id="basket-content">
-      <div id="basket-header">
-        <h3 id="h3-title">Votre panier</h3>
-      </div>
-      <div v-bind:key="candle.id" v-for="candle in basket" id="candle-infos">
-        <div id="basket-items-container">
-          <CandleCard
-            class="card"
-            :id="candle.id"
-            :title="candle.name"
-            :img="candle.img"
-            :desc="candle.desc"
-            :width="'150px'"
-            :height="'188px'"
-            :showDesc="false"
-          />
-          <div id="candle-desc">
-            <p v-html="candle.desc"></p>
-          </div>
+    <Navbar id="navbar" ref="scrollContainer" :isScrolled="true" />
+    <div id="basket-section">
+      <div id="basket-content">
+        <div id="basket-header">
+          <h3 id="h3-title">Votre panier</h3>
         </div>
-        <div>
-          <Button @click="log('test')" class="btn" :text="'X'" :color="'green'" />
+        <div v-for="candle in basket" id="candle-infos" :key="candle.id">
+          <div id="basket-items-container">
+            <CandleCard
+              :id="candle.id"
+              class="card"
+              :title="candle.name"
+              :img="candle.img"
+              :desc="candle.desc"
+              :width="'150px'"
+              :height="'188px'"
+              :show-desc="false"
+              :weight="candle.weight"
+            />
+            <div id="candle-desc">
+              <h4>{{ candle.name }}</h4>
+              <p>
+                Taille en cm (sans la mèche) {{ candle.size.width }} x
+                {{ candle.size.height }}
+              </p>
+              <p>{{ candle.weight }} grammes de cire de Soja</p>
+              <p>+ {{ candle.scentPrice }}€ pour l'ajout d'un parfum</p>
+              <p>+ {{ candle.colorPrice }}€ pour l'ajout d'une couleur</p>
+            </div>
+          </div>
+          <div>
+            <Button class="btn" :text="'X'" :color="'green'" @click="log('test')" />
+          </div>
         </div>
       </div>
     </div>
@@ -50,8 +60,18 @@ console.log(basket)
   overflow: hidden;
 }
 
+#basket-section {
+  width: 100%;
+  padding: 100px;
+  background-color: var(--vt-c-dark-yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #basket-content {
   height: 100%;
+  width: 100%;
   margin-top: 80px;
   position: relative;
   z-index: 1;
@@ -59,30 +79,31 @@ console.log(basket)
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 50px;
 }
 
 #h3-title {
   color: var(--vt-c-dark-green);
-  margin-left: 100px;
 }
 
 #basket-items-container {
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
-  align-items: end;
 }
 
 #candle-desc {
-  padding: 0px 20px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #candle-infos {
-  min-width: 500px;
-  max-width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
 }
 
 .card {

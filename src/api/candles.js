@@ -1,23 +1,155 @@
-import img1 from '@/assets/img/IMG_0333_1.png';
+import img1 from '@/assets/img/IMG_0333_1.png'
 
 /* eslint-disable no-undef */
 const candles = [
-    { id: 1, name: 'Bougie', img: img1, desc: 'Taille en cm sans la mèche : 6 X 6 <br> 147 grammes de cire de soja<br> + 1,50€ pour l\'ajout d\'un parfum<br> +1€ pour l\'ajout d\'une couleur' },
-    { id: 2, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 3, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 4, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 5, name: 'Bougie', img: img1, desc: 'blablablablablaaaaaaaaaaaaaaaaaaaaaaaaaaaa' },
-    { id: 6, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 7, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 8, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 9, name: 'Bougie', img: img1, desc: 'blablablablablaaaaaaaaaaaaaaaaaaaaaaaaaaaa' },
-    { id: 10, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 11, name: 'Bougie', img: img1, desc: 'blablablablabla' },
-    { id: 12, name: 'Bougie', img: img1, desc: 'blablablablabla' },
+    {
+        id: 1,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 2,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 3,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 4,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+
+        weight: 300
+    },
+    {
+        id: 5,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 6,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 7,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 8,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 9,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 10,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 11,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
+    {
+        id: 12,
+        name: 'Bougie',
+        img: img1,
+        size: {
+            width: 6,
+            height: 6,
+        },
+        scentPrice: 1.5,
+        colorPrice: 1,
+        weight: 300
+    },
 ]
 
-
-export default candles;
+export default candles
 
 // const imagePaths = [
 //     '@/assets/img/IMG_0333_1.png',

@@ -13,25 +13,25 @@ function redirectTo() {
         <h3>Commander une bougie c'est très simple !</h3>
         <div id="icons-wrapper">
           <div class="icon-wrapper">
-            <div class="icon" id="candle-icon"></div>
+            <div id="candle-icon" class="icon"></div>
             <p class="icon-text">Choisissez votre bougie</p>
           </div>
           <div class="icon-wrapper">
-            <div class="icon" id="color-icon"></div>
+            <div id="color-icon" class="icon"></div>
             <p class="icon-text">Sa couleur</p>
           </div>
           <div class="icon-wrapper">
-            <div class="icon" id="parfum-icon"></div>
+            <div id="parfum-icon" class="icon"></div>
             <p class="icon-text">Son parfum</p>
           </div>
           <div class="icon-btn-wrapper">
             <div class="icon-wrapper">
-              <div class="icon" id="contact-icon"></div>
+              <div id="contact-icon" class="icon"></div>
               <Button
-                @click="redirectTo()"
                 class="btn"
                 :text="'Commandez sur instagram'"
                 :color="'green'"
+                @click="redirectTo()"
               />
             </div>
           </div>

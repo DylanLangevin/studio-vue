@@ -23,12 +23,12 @@ function redirectTo(location: string) {
           <h3>Suivez moi</h3>
           <div id="contact-icons">
             <div
-              @click="redirectTo(contactInstagram)"
-              class="contact-icon"
               id="instagram-icon"
+              class="contact-icon"
+              @click="redirectTo(contactInstagram)"
             ></div>
-            <div @click="redirectTo(contactFacebook)" class="contact-icon" id="facebook-icon"></div>
-            <div @click="redirectTo(contactThreads)" class="contact-icon" id="threads-icon"></div>
+            <div id="facebook-icon" class="contact-icon" @click="redirectTo(contactFacebook)"></div>
+            <div id="threads-icon" class="contact-icon" @click="redirectTo(contactThreads)"></div>
           </div>
         </div>
       </div>

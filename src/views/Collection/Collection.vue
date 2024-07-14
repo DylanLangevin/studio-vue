@@ -8,21 +8,25 @@ import candles from '@/api/candles.js'
 
 <template>
   <main id="collection">
-    <Navbar ref="scrollContainer" :isScrolled="true" id="navbar" />
+    <Navbar id="navbar" ref="scrollContainer" :isScrolled="true" />
     <div id="collection-content">
       <div id="collection-header">
         <h3 id="h3-title">Collection</h3>
       </div>
       <div id="cards-container">
         <CandleCard
-          class="card"
+          v-for="candle in candles"
           :id="candle.id"
+          :key="candle.id"
+          class="card"
           :title="candle.name"
           :img="candle.img"
-          :desc="candle.desc"
-          v-for="candle in candles"
-          v-bind:key="candle.id"
-          :showDesc="true"
+          :candleSizeWidth="candle.size.width"
+          :candleSizeHeight="candle.size.height"
+          :scentPrice="candle.scentPrice"
+          :colorPrice="candle.colorPrice"
+          :weight="candle.weight"
+          :show-desc="true"
         />
       </div>
     </div>

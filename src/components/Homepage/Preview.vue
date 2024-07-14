@@ -56,22 +56,22 @@ onUnmounted(() => {
         </div>
         <div id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
+            v-for="candle in previewCandles"
             :id="candle.id"
+            :key="candle.id"
             :title="candle.name"
             :img="candle.img"
             :desc="candle.desc"
-            v-for="candle in previewCandles"
-            v-bind:key="candle.id"
             class="test"
-            :showDesc="true"
+            :show-desc="true"
           />
         </div>
         <div v-if="isMobile" id="btn-wrapper">
           <Button
-            @click="redirectTo('/collection')"
             class="btn"
             :text="'Voir tous mes produits'"
             :color="'green'"
+            @click="redirectTo('/collection')"
           />
         </div>
       </div>

@@ -1,1 +1,1 @@
-export const publicPath = "/studio-vue/";
+export const publicPath = '/studio-vue/'

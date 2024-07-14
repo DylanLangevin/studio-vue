@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+// import { computed } from 'vue'
+
 interface NavbarProps {
   isScrolled: boolean
 }
 const props = defineProps<NavbarProps>()
 
-const isMobile = computed(() => {
-  return window.innerWidth < 768
-})
+// const isMobile = computed(() => {
+//   return window.innerWidth < 768
+// })
 </script>
 
 <template>

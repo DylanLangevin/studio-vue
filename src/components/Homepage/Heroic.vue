@@ -16,10 +16,10 @@ const scrollToSection = (section: string) => {
         <span></span>
         <h1 id="h1-title">BOUGIES <br />ARTISANALES</h1>
         <Button
-          @click="scrollToSection('preview-section')"
           class="btn"
           :text="'Découvrir mes bougies'"
           :color="'white'"
+          @click="scrollToSection('preview-section')"
         />
       </div>
     </div>
