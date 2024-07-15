@@ -18,7 +18,7 @@ const scrollToSection = (section: string) => {
         <Button
           class="btn"
           :text="'Découvrir mes bougies'"
-          :color="'white'"
+          :color="'grey'"
           @click="scrollToSection('preview-section')"
         />
       </div>

@@ -32,15 +32,23 @@ p {
 }
 
 .button-white {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: white;
+}
+.button-white p {
+  color: black;
 }
 
 .button-green {
   background-color: var(--vt-c-dark-green);
 }
 
+.button-grey {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 .button-white p,
-.button-green p {
+.button-green p,
+.button-grey p {
   color: white;
 }
 

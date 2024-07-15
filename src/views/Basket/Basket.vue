@@ -2,14 +2,19 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CandleCard from '../../components/CandleCard.vue'
-import Button from '@/components/Button.vue'
-import basket from '@/api/basket.js'
+import { getBasket, getBasketCandlesInfos, removeItemFromBasket } from '@/utils/basket'
+import { reactive, toRefs } from 'vue'
 
-const log = (info: string) => {
-  console.log(info)
+const state = reactive({
+  basketIds: getBasket()
+})
+
+const { basketIds } = toRefs(state)
+
+const removeCandle = (candleId: number) => {
+  removeItemFromBasket(candleId)
+  state.basketIds = getBasket()
 }
-
-console.log(basket)
 </script>
 
 <template>
@@ -20,7 +25,7 @@ console.log(basket)
         <div id="basket-header">
           <h3 id="h3-title">Votre panier</h3>
         </div>
-        <div v-for="candle in basket" id="candle-infos" :key="candle.id">
+        <div v-for="candle in getBasketCandlesInfos(basketIds)" id="candle-infos" :key="candle.id">
           <div id="basket-items-container">
             <CandleCard
               :id="candle.id"
@@ -34,7 +39,6 @@ console.log(basket)
               :weight="candle.weight"
             />
             <div id="candle-desc">
-              <h4>{{ candle.name }}</h4>
               <p>
                 Taille en cm (sans la mèche) {{ candle.size.width }} x
                 {{ candle.size.height }}
@@ -45,7 +49,7 @@ console.log(basket)
             </div>
           </div>
           <div>
-            <Button class="btn" :text="'X'" :color="'green'" @click="log('test')" />
+            <div class="btn" @click="removeCandle(candle.id)">X</div>
           </div>
         </div>
       </div>
@@ -55,9 +59,26 @@ console.log(basket)
 </template>
 
 <style scoped>
+.btn {
+  border-radius: 8px;
+  background-color: var(--vt-c-dark-green);
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-family: 'Open Sauce Sans';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 #basket {
   width: 100%;
   overflow: hidden;
+}
+
+#basket-header {
+  width: 90%;
+  margin-bottom: 20px;
 }
 
 #basket-section {
@@ -78,6 +99,7 @@ console.log(basket)
   background-color: var(--vt-c-dark-yellow);
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -99,7 +121,7 @@ console.log(basket)
 }
 
 #candle-infos {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid grey;
@@ -108,5 +130,23 @@ console.log(basket)
 
 .card {
   margin: 10px 0px;
+}
+
+@media (max-width: 800px) {
+  #candle-infos {
+    width: 100%;
+  }
+  #basket-header {
+    width: 90%;
+  }
+  #basket-section {
+    padding: 50px 20px;
+  }
+  #basket-items-container {
+    flex-direction: column;
+  }
+  #candle-desc {
+    padding: 10px 0;
+  }
 }
 </style>

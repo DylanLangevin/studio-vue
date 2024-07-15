@@ -50,7 +50,10 @@ import candles from '@/api/candles.js'
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 50px;
+  padding: 100px;
+}
+#collection-header {
+  width: 90%;
 }
 
 #h3-title {
@@ -68,5 +71,26 @@ import candles from '@/api/candles.js'
 
 .card {
   padding: 10px;
+}
+
+@media (max-width: 1000px) {
+  #candle-infos {
+    width: 100%;
+  }
+  #collection-header {
+    width: 100%;
+  }
+  #collection-content {
+    padding: 50px 20px;
+  }
+  #basket-items-container {
+    flex-direction: column;
+  }
+  #candle-desc {
+    padding: 10px 0;
+  }
+  #collection-header {
+    width: 80%;
+  }
 }
 </style>

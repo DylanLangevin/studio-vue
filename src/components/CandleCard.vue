@@ -1,6 +1,7 @@
-<!-- eslint-disable vue/no-parsing-error -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
+import { getBasket } from '@/utils/basket'
 
 const descActive = ref(false)
 
@@ -39,8 +40,11 @@ const cardStyle = computed(() => ({
 }))
 
 const addToBasket = (candleId: number) => {
-  console.log(candleId)
-  console.log(props)
+  let basket = getBasket()
+  if (!basket.includes(candleId)) {
+    basket.push(candleId)
+    sessionStorage.setItem('basketIds', JSON.stringify(basket))
+  }
 }
 </script>
 
@@ -54,6 +58,7 @@ const addToBasket = (candleId: number) => {
     >
       <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
         <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
+
         <span
           v-if="shouldShowDesc"
           class="icon"
