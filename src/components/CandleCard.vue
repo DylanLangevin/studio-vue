@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, reactive, ref, toRefs } from 'vue'
 
 import { getBasket } from '@/utils/basket'
 
@@ -21,6 +21,12 @@ export interface CandleCardProps {
 }
 const props = defineProps<CandleCardProps>()
 
+const state = reactive({
+  basketIds: getBasket()
+})
+
+const { basketIds } = toRefs(state)
+
 const isMobile = computed(() => {
   return window.innerWidth < 768
 })
@@ -28,6 +34,7 @@ const isMobile = computed(() => {
 const image = props.img
 const width = props.width
 const height = props.height
+const candleId = props.id
 const shouldShowDesc = props.showDesc ? true : false
 
 const cardStyle = computed(() => ({
@@ -39,12 +46,17 @@ const cardStyle = computed(() => ({
   height: height ? height : '353px'
 }))
 
+const isInBasket = computed(() => {
+  return basketIds.value.includes(candleId)
+})
+
 const addToBasket = (candleId: number) => {
   let basket = getBasket()
   if (!basket.includes(candleId)) {
     basket.push(candleId)
     sessionStorage.setItem('basketIds', JSON.stringify(basket))
   }
+  state.basketIds = getBasket()
 }
 </script>
 
@@ -67,6 +79,9 @@ const addToBasket = (candleId: number) => {
         ></span>
       </div>
 
+      <div v-if="shouldShowDesc && isInBasket" id="in-basket">
+        <p>Déja dans votre panier !</p>
+      </div>
       <div
         v-if="shouldShowDesc"
         :class="{ 'is-visible': descActive || isMobile }"
@@ -144,6 +159,17 @@ const addToBasket = (candleId: number) => {
 }
 .card-desc p {
   font-size: 0.8rem;
+  color: white;
+}
+
+#in-basket {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+#in-basket p {
   color: white;
 }
 
