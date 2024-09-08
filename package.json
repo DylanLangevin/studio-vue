@@ -17,6 +17,7 @@
     "vue": "^3.4.21",
     "vue-parallaxy": "^1.1.1",
     "vue-router": "^4.3.0",
+    "vue-uuid": "^3.0.0",
     "vue3-parallax": "^0.1.4"
   },
   "devDependencies": {

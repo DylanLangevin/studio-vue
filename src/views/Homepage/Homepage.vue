@@ -40,7 +40,7 @@ onUnmounted(() => {
 <template>
   <main id="homepage">
     <Navbar ref="scrollContainer" :isScrolled="isScrolled" />
-    <Heroic @scrollToSection="handleScrollToSection" id="heroic-section" />
+    <Heroic id="heroic-section" @scroll-to-section="handleScrollToSection" />
 
     <Preview />
 

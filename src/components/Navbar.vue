@@ -18,13 +18,16 @@ const props = defineProps<NavbarProps>()
     :class="[{ 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled }]"
   >
     <div id="navlink-section" class="flex-center">
-      <router-link class="navlinks" to="/"><div id="logo-icon"></div></router-link>
-      <!-- <div v-if="isMobile" id="navlink-section-right">
-        <div id="mobile-icon"></div>
-      </div> -->
+      <!-- <router-link class="navlinks" to="/"><div id="logo-icon"></div></router-link> -->
       <div id="navlink-section-right">
+        <div
+          id="mobile-icon"
+          :class="[{ 'bcg-green': props.isScrolled, 'bcg-yellow': !props.isScrolled }]"
+        ></div>
+      </div>
+      <div id="navlink-section-right">
+        <router-link class="navlinks" to="/"><p>Accueil</p></router-link>
         <router-link class="navlinks" to="/collection"><p>Collection</p></router-link>
-        <router-link class="navlinks" to="/contact"><p>Contact</p></router-link>
         <router-link class="navlinks" to="/basket"
           ><div
             :class="[{ 'basket-icon': props.isScrolled, 'basket-icon-fixed': !props.isScrolled }]"
@@ -83,8 +86,17 @@ const props = defineProps<NavbarProps>()
 }
 
 #mobile-icon {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+}
+
+.bcg-yellow {
+  background-color: var(--vt-c-dark-yellow);
+}
+
+.bcg-green {
+  background-color: var(--vt-c-dark-green);
 }
 
 #logo-icon {

@@ -2,18 +2,53 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CandleCard from '../../components/CandleCard.vue'
-import { getBasket, getBasketCandlesInfos, removeItemFromBasket } from '@/utils/basket'
-import { reactive, toRefs } from 'vue'
+import Button from '@/components/Button.vue'
+import {
+  getBasket,
+  getBasketIds,
+  getBasketCandlesInfos,
+  removeItemFromBasket,
+  modifyBasketItem,
+  getBasketItemById
+} from '@/utils/basket'
+import { computed, reactive, ref, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
+
+import scents from '@/api/scents.js'
+import colors from '@/api/colors.js'
+
+const router = useRouter()
 
 const state = reactive({
-  basketIds: getBasket()
+  basketIds: getBasketIds(),
+  basket: getBasket()
 })
+
+const basicPrice = ref(6)
 
 const { basketIds } = toRefs(state)
 
 const removeCandle = (candleId: number) => {
   removeItemFromBasket(candleId)
-  state.basketIds = getBasket()
+  state.basketIds = getBasketIds()
+}
+
+const redirectTo = (location: string) => {
+  router.push(location)
+}
+
+const invalidBasket = (): boolean => {
+  return state.basket.some((element) => {
+    return element.color.length < 1 || element.scent.length < 1
+  })
+}
+
+const isBasketInvalid = computed(() => {
+  return invalidBasket()
+})
+
+const basketItemFromStorage = (candleId: number) => {
+  return getBasketItemById(candleId)
 }
 </script>
 
@@ -24,6 +59,7 @@ const removeCandle = (candleId: number) => {
       <div id="basket-content">
         <div id="basket-header">
           <h3 id="h3-title">Votre panier</h3>
+          <h5 v-if="isBasketInvalid">Le basket n'est pas validé</h5>
         </div>
         <div v-for="candle in getBasketCandlesInfos(basketIds)" id="candle-infos" :key="candle.id">
           <div id="basket-items-container">
@@ -32,24 +68,63 @@ const removeCandle = (candleId: number) => {
               class="card"
               :title="candle.name"
               :img="candle.img"
-              :desc="candle.desc"
               :width="'150px'"
               :height="'188px'"
               :show-desc="false"
               :weight="candle.weight"
+              :candleSizeWidth="candle.size.width"
+              :candleSizeHeight="candle.size.height"
+              :scentPrice="candle.scentPrice"
+              :colorPrice="candle.colorPrice"
             />
             <div id="candle-desc">
-              <p>
-                Taille en cm (sans la mèche) {{ candle.size.width }} x
-                {{ candle.size.height }}
-              </p>
-              <p>{{ candle.weight }} grammes de cire de Soja</p>
-              <p>+ {{ candle.scentPrice }}€ pour l'ajout d'un parfum</p>
-              <p>+ {{ candle.colorPrice }}€ pour l'ajout d'une couleur</p>
+              <div>
+                <p>Ajouter un parfum ? (+ {{ candle.scentPrice }}€)</p>
+                <select
+                  @change="(event) => modifyBasketItem(candle.id, 'scent', event.target.value)"
+                >
+                  <option v-for="scent in scents" :key="scent.id" :value="scent.name">
+                    {{ scent.name }}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <p>Ajouter une couleur ? (+ {{ candle.colorPrice }}€)</p>
+                <select
+                  @change="(event) => modifyBasketItem(candle.id, 'color', event.target.value)"
+                >
+                  <option
+                    v-for="color in colors"
+                    :key="color.id"
+                    :value="color.name"
+                    @click="modifyBasketItem(candle.id, 'color', color.name)"
+                  >
+                    {{ color.name }}
+                  </option>
+                </select>
+              </div>
             </div>
           </div>
-          <div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              padding: 10px 0;
+            "
+          >
             <div class="btn" @click="removeCandle(candle.id)">X</div>
+            <p>{{ basicPrice }}€</p>
+          </div>
+        </div>
+        <div v-if="getBasketCandlesInfos(basketIds).length < 1" id="empty-basket">
+          <p>Votre panier est vide !</p>
+          <div id="empty-basket-button">
+            <Button
+              :text="'Voir mes produits'"
+              :color="'green'"
+              @click="redirectTo('/collection')"
+            />
           </div>
         </div>
       </div>
@@ -73,6 +148,7 @@ const removeCandle = (candleId: number) => {
 }
 #basket {
   width: 100%;
+
   overflow: hidden;
 }
 
@@ -87,7 +163,7 @@ const removeCandle = (candleId: number) => {
   background-color: var(--vt-c-dark-yellow);
   display: flex;
   justify-content: center;
-  align-items: center;
+  min-height: 100vh;
 }
 
 #basket-content {
@@ -117,7 +193,7 @@ const removeCandle = (candleId: number) => {
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
 }
 
 #candle-infos {
@@ -130,6 +206,16 @@ const removeCandle = (candleId: number) => {
 
 .card {
   margin: 10px 0px;
+}
+
+#empty-basket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#empty-basket-button {
+  margin-top: 20px;
 }
 
 @media (max-width: 800px) {

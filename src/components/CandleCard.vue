@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, reactive, ref, toRefs } from 'vue'
+import { uuid } from 'vue-uuid'
 
-import { getBasket } from '@/utils/basket'
+import { getBasket, getBasketIds } from '@/utils/basket'
 
 const descActive = ref(false)
 
@@ -9,7 +10,6 @@ export interface CandleCardProps {
   id: number
   title: string
   img: string
-  desc: string
   width: string | null
   height: string | null
   candleSizeWidth: number
@@ -19,13 +19,22 @@ export interface CandleCardProps {
   weight: number
   showDesc: boolean
 }
+export interface basketItem {
+  id: string
+  candleId: number
+  scent: string
+  color: string
+  basicPrice: number
+}
+
 const props = defineProps<CandleCardProps>()
 
 const state = reactive({
-  basketIds: getBasket()
+  basketIds: getBasketIds()
 })
 
 const { basketIds } = toRefs(state)
+console.log(basketIds.value)
 
 const isMobile = computed(() => {
   return window.innerWidth < 768
@@ -50,13 +59,30 @@ const isInBasket = computed(() => {
   return basketIds.value.includes(candleId)
 })
 
-const addToBasket = (candleId: number) => {
+const addToBasketObject = (candleId: number) => {
   let basket = getBasket()
-  if (!basket.includes(candleId)) {
-    basket.push(candleId)
-    sessionStorage.setItem('basketIds', JSON.stringify(basket))
+
+  let candleItem: basketItem = {
+    id: '',
+    candleId: 0,
+    scent: '',
+    color: '',
+    basicPrice: 0
   }
-  state.basketIds = getBasket()
+
+  // TODO 1
+  if (!basketIds.value.includes(candleId)) {
+    candleItem['id'] = uuid.v1()
+    candleItem['candleId'] = candleId
+    candleItem['scent'] = ''
+    candleItem['color'] = ''
+    candleItem['basicPrice'] = 6
+
+    basket.push(candleItem)
+    sessionStorage.setItem('basketIds', JSON.stringify(basket))
+    console.log(basket, sessionStorage)
+  }
+  basketIds.value = getBasketIds()
 }
 </script>
 
@@ -75,7 +101,7 @@ const addToBasket = (candleId: number) => {
           v-if="shouldShowDesc"
           class="icon"
           :class="{ 'is-visible': descActive || isMobile }"
-          @click="addToBasket(props.id)"
+          @click="addToBasketObject(props.id)"
         ></span>
       </div>
 
