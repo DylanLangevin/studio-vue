@@ -4,30 +4,51 @@ import Collection from '../views/Collection/Collection.vue'
 import Contact from '../views/Contact/Contact.vue'
 import Basket from '../views/Basket/Basket.vue'
 
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Homepage,
+    meta: {
+      title: 'Accueil - Studio Bougie'
+    }
+  },
+  {
+    path: '/collection',
+    name: 'collection',
+    component: Collection,
+    meta: {
+      title: 'Collection - Studio Bougie'
+    }
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: Contact,
+    meta: {
+      title: 'Contact - Studio Bougie'
+    }
+  },
+  {
+    path: '/basket',
+    name: 'basket',
+    component: Basket,
+    meta: {
+      title: 'Panier - Studio Bougie'
+    }
+  }
+]
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Homepage
-    },
-    {
-      path: '/collection',
-      name: 'collection',
-      component: Collection
-    },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: Contact
-    },
-    {
-      path: '/basket',
-      name: 'basket',
-      component: Basket
-    }
-  ]
+  routes
+})
+
+// Hook global pour mettre à jour le titre de la page
+router.beforeEach((to, from, next) => {
+  const defaultTitle = 'Studio Bougie';  // Titre par défaut
+  document.title = to.meta.title || defaultTitle;
+  next();
 })
 
 export default router

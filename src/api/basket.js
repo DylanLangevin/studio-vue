@@ -1,5 +1,5 @@
 import img1 from '@/assets/img/IMG_0333_1.png'
-/* eslint-disable no-undef */
+
 const basket = [
     {
         id: 1,

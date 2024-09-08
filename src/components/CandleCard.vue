@@ -10,8 +10,6 @@ export interface CandleCardProps {
   id: number
   title: string
   img: string
-  width: string | null
-  height: string | null
   candleSizeWidth: number
   candleSizeHeight: number
   scentPrice: number
@@ -19,6 +17,8 @@ export interface CandleCardProps {
   weight: number
   showDesc: boolean
   candlePrice: number
+  width?: string | null
+  height?: string | null
 }
 export interface basketItem {
   id: string
@@ -94,7 +94,7 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
       @mouseleave="descActive = false"
     >
       <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
-        <h2 id="card-title">{{ props.title.toLocaleUpperCase() }}</h2>
+        <h3 id="card-title">{{ props.title }}</h3>
 
         <span
           v-if="shouldShowDesc"
@@ -114,11 +114,8 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
       >
       <h3 style="font-family: Open Sauce Sans;color: white;">{{ props.candlePrice }} €</h3>
         <p>
-          Taille en cm (sans la mèche) {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
+          Taille en cm {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
         </p>
-        <p>{{ props.weight }} grammes de cire de Soja</p>
-        <p>+ {{ props.scentPrice }}€ pour l'ajout d'un parfum</p>
-        <p>+ {{ props.colorPrice }}€ pour l'ajout d'une couleur</p>
       </div>
     </div>
   </main>

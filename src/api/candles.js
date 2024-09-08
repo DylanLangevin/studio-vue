@@ -8,7 +8,6 @@ import tornadeImg from '@/assets/img/candle-cards/tornade.jpeg'
 import torsadeImg from '@/assets/img/candle-cards/torsade.jpeg'
 import tresseeImg from '@/assets/img/candle-cards/tressee.jpeg'
 
-/* eslint-disable no-undef */
 const candles = [
     {
         id: 6,
@@ -16,7 +15,7 @@ const candles = [
         img: torsadeImg,
         size: {
             width: 6,
-            height: 6
+            height: 5.5
         },
         scentPrice: 1.5,
         colorPrice: 1,
@@ -30,7 +29,7 @@ const candles = [
         img: tornadeImg,
         size: {
             width: 6,
-            height: 6
+            height: 5.5
         },
         scentPrice: 1.5,
         colorPrice: 1,
@@ -55,7 +54,7 @@ const candles = [
         name: 'Little Rainbow',
         img: petitRainbowImg,
         size: {
-            width: 6,
+            width: 12,
             height: 6
         },
         scentPrice: 1.5,
@@ -69,8 +68,8 @@ const candles = [
         name: 'Petite bulle',
         img: petitBubbleImg,
         size: {
-            width: 6,
-            height: 6
+            width: 4,
+            height: 3
         },
         scentPrice: 1.5,
         colorPrice: 1,
@@ -82,8 +81,8 @@ const candles = [
         name: 'Pivoine',
         img: pivoineImg,
         size: {
-            width: 6,
-            height: 6
+            width: 4.5,
+            height: 5
         },
         scentPrice: 1.5,
         colorPrice: 1,
@@ -95,8 +94,8 @@ const candles = [
         name: 'Rainbow',
         img: rainbowImg,
         size: {
-            width: 6,
-            height: 6
+            width: 15,
+            height: 15
         },
         scentPrice: 1.5,
         colorPrice: 1,
@@ -109,8 +108,8 @@ const candles = [
         name: 'Tressee',
         img: tresseeImg,
         size: {
-            width: 6,
-            height: 6
+            width: 5.5,
+            height: 5.5
         },
         scentPrice: 1.5,
         colorPrice: 1,

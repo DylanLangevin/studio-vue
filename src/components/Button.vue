@@ -20,7 +20,7 @@ p {
 #button {
   border: none;
   width: fit-content;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 100px;
   z-index: 120;
   position: relative;

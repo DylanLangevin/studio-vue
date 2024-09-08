@@ -29,7 +29,7 @@ function redirectTo() {
               <div id="contact-icon" class="icon"></div>
               <Button
                 class="btn"
-                :text="'Commandez sur instagram'"
+                :text="'Commander sur Instagram'"
                 :color="'green'"
                 @click="redirectTo()"
               />

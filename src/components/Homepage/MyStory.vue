@@ -4,9 +4,9 @@ import { defineEmits, onMounted, onUnmounted, ref } from 'vue'
 
 const emits = defineEmits(['scrollToSection'])
 
-const scrollToSection = (section: string) => {
-  emits('scrollToSection', section)
-}
+// const scrollToSection = (section: string) => {
+//   emits('scrollToSection', section)
+// }
 
 function redirectTo() {
   window.open(import.meta.env.VITE_CONTACT_INSTAGRAM, '_blank')
@@ -68,14 +68,14 @@ onUnmounted(() => {
           </div>
         </div>
         <div id="text-wrapper">
-          <h3>Mon Histoire</h3>
+          <h3>A propos</h3>
           <p>
-            Depuis que je suis petite, j'ai toujours aimé les bougies. L'idée de capturer des parfums et de les transformer en lumière m'a toujours fascinée. Alors, un jour, j'ai décidé de fabriquer les miennes. Je me suis lancée, d'abord avec de simples ingrédients : cire, mèches, et des huiles essentielles que j'aimais. Chaque étape est un mélange de patience et de créativité. Je choisis chaque parfum en fonction de mon humeur, et le résultat est une pièce unique. Maintenant, je vends même mes bougies artisanales, chacune racontant une petite histoire de moi.
+            L'idée de capturer des parfums et de les transformer en lumière m'a toujours fascinée. Alors, un jour, j'ai décidé de fabriquer les miennes. Je me suis lancée, d'abord avec de simples ingrédients : cire, mèches, et des huiles essentielles que j'aimais. Chaque étape est un mélange de patience et de créativité. Je choisis chaque parfum en fonction de mon humeur, et le résultat est une pièce unique. Maintenant, je vends même mes bougies artisanales, chacune racontant une petite histoire de moi.
           </p>
           <div id="btn-wrapper">
             <Button
               class="btn"
-              :text="'Me contacter sur mes réseaux'"
+              :text="'Me contacter'"
               :color="'green'"
               @click="redirectTo()"
             />

@@ -14,7 +14,7 @@ const containerRef = ref<HTMLElement | null>(null)
 const leftPosition = ref(0)
 
 const previewCandles = computed(() => {
-  return candles.filter((item: CandleCardProps) => item.id < 5)
+  return candles.filter((item: CandleCardProps) => item.id < 6)
 })
 
 const redirectTo = (location: string) => {
@@ -54,7 +54,7 @@ onUnmounted(() => {
             ><p>Voir tout</p></router-link
           >
         </div>
-        <div id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
+        <div v-if="previewCandles" id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
             v-for="candle in previewCandles"
             :id="candle.id"
@@ -67,6 +67,7 @@ onUnmounted(() => {
             :colorPrice="candle.colorPrice"
             :weight="candle.weight"
             :desc="candle.desc"
+            :candlePrice="candle.price"
             class="test"
             :show-desc="true"
           />
