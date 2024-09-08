@@ -26,6 +26,7 @@ import candles from '@/api/candles.js'
           :scentPrice="candle.scentPrice"
           :colorPrice="candle.colorPrice"
           :weight="candle.weight"
+          :candlePrice="candle.price"
           :show-desc="true"
         />
       </div>

@@ -8,6 +8,10 @@ const scrollToSection = (section: string) => {
   emits('scrollToSection', section)
 }
 
+function redirectTo() {
+  window.open(import.meta.env.VITE_CONTACT_INSTAGRAM, '_blank')
+}
+
 const isScrolled = ref(false)
 const scrollTop = ref(0)
 let translateValue1 = ref(55)
@@ -66,25 +70,14 @@ onUnmounted(() => {
         <div id="text-wrapper">
           <h3>Mon Histoire</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti facilis quam, in
-            libero est rem corporis, amet unde ipsa deserunt sint aliquam excepturi nobis dicta non.
-            Recusandae accusamus rerum dolorum. Inventore, mollitia provident quo corporis
-            voluptatibus consequatur voluptatum blanditiis dignissimos dolor beatae tempore
-            exercitationem odit similique cum. Ipsa, non incidunt at accusantium enim fugit quaerat
-            ratione libero pariatur? Quaerat, porro.
+            Depuis que je suis petite, j'ai toujours aimé les bougies. L'idée de capturer des parfums et de les transformer en lumière m'a toujours fascinée. Alors, un jour, j'ai décidé de fabriquer les miennes. Je me suis lancée, d'abord avec de simples ingrédients : cire, mèches, et des huiles essentielles que j'aimais. Chaque étape est un mélange de patience et de créativité. Je choisis chaque parfum en fonction de mon humeur, et le résultat est une pièce unique. Maintenant, je vends même mes bougies artisanales, chacune racontant une petite histoire de moi.
           </p>
           <div id="btn-wrapper">
             <Button
               class="btn"
               :text="'Me contacter sur mes réseaux'"
               :color="'green'"
-              @click="scrollToSection('preview-section')"
-            />
-            <Button
-              class="btn"
-              :text="'Button'"
-              :color="'green'"
-              @click="scrollToSection('preview-section')"
+              @click="redirectTo()"
             />
           </div>
         </div>

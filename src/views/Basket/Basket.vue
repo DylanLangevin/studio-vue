@@ -24,8 +24,6 @@ const state = reactive({
   basket: getBasket()
 })
 
-const basicPrice = ref(6)
-
 const { basketIds } = toRefs(state)
 
 const removeCandle = (candleId: number) => {
@@ -37,19 +35,6 @@ const redirectTo = (location: string) => {
   router.push(location)
 }
 
-const invalidBasket = (): boolean => {
-  return state.basket.some((element) => {
-    return element.color.length < 1 || element.scent.length < 1
-  })
-}
-
-const isBasketInvalid = computed(() => {
-  return invalidBasket()
-})
-
-const basketItemFromStorage = (candleId: number) => {
-  return getBasketItemById(candleId)
-}
 </script>
 
 <template>
@@ -59,7 +44,6 @@ const basketItemFromStorage = (candleId: number) => {
       <div id="basket-content">
         <div id="basket-header">
           <h3 id="h3-title">Votre panier</h3>
-          <h5 v-if="isBasketInvalid">Le basket n'est pas validé</h5>
         </div>
         <div v-for="candle in getBasketCandlesInfos(basketIds)" id="candle-infos" :key="candle.id">
           <div id="basket-items-container">
@@ -76,6 +60,7 @@ const basketItemFromStorage = (candleId: number) => {
               :candleSizeHeight="candle.size.height"
               :scentPrice="candle.scentPrice"
               :colorPrice="candle.colorPrice"
+              :candlePrice="candle.price"
             />
             <div id="candle-desc">
               <div>
@@ -114,7 +99,7 @@ const basketItemFromStorage = (candleId: number) => {
             "
           >
             <div class="btn" @click="removeCandle(candle.id)">X</div>
-            <p>{{ basicPrice }}€</p>
+            <p>{{ candle.price }}€</p>
           </div>
         </div>
         <div v-if="getBasketCandlesInfos(basketIds).length < 1" id="empty-basket">

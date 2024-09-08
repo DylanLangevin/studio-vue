@@ -24,7 +24,6 @@ export function getBasketCandlesInfos(basketIds: number[]) {
   const basketToDisplay = []
 
   basketIds.forEach((element) => {
-    // TODO AOUT : aller chercher le basket a partir du basket id pour avoir le candle id
 
     const basketItem = getBasketItemById(element)
 

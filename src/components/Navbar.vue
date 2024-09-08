@@ -1,14 +1,10 @@
 <script setup lang="ts">
-// import { computed } from 'vue'
 
 interface NavbarProps {
   isScrolled: boolean
 }
 const props = defineProps<NavbarProps>()
 
-// const isMobile = computed(() => {
-//   return window.innerWidth < 768
-// })
 </script>
 
 <template>
@@ -18,13 +14,7 @@ const props = defineProps<NavbarProps>()
     :class="[{ 'position-fixed': props.isScrolled, 'position-absolute': !props.isScrolled }]"
   >
     <div id="navlink-section" class="flex-center">
-      <!-- <router-link class="navlinks" to="/"><div id="logo-icon"></div></router-link> -->
-      <div id="navlink-section-right">
-        <div
-          id="mobile-icon"
-          :class="[{ 'bcg-green': props.isScrolled, 'bcg-yellow': !props.isScrolled }]"
-        ></div>
-      </div>
+      <router-link  class="navlinks" to="/"><h3>STUDIO BOUGIE</h3></router-link>
       <div id="navlink-section-right">
         <router-link class="navlinks" to="/"><p>Accueil</p></router-link>
         <router-link class="navlinks" to="/collection"><p>Collection</p></router-link>
@@ -126,11 +116,6 @@ const props = defineProps<NavbarProps>()
   background-repeat: no-repeat;
 }
 
-/* .navbar-hidden {
-  top: -80px;
-  transition: top 0.3s ease;
-} */
-
 /* Mobile */
 @media only screen and (max-width: 600px) {
   #navlink-section {
@@ -138,7 +123,7 @@ const props = defineProps<NavbarProps>()
   }
 
   #navbar {
-    height: 52px;
+    height: 80px;
     z-index: 300;
     transition: all 0.3s ease;
   }
@@ -149,7 +134,4 @@ const props = defineProps<NavbarProps>()
   }
 }
 
-/* Tablettes */
-@media (min-width: 600px) and (max-width: 1024px) {
-}
 </style>

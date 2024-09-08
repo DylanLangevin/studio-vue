@@ -16,7 +16,6 @@ function redirectTo(location: string) {
           <h3>Informations</h3>
           <div class="navlinks-wrapper">
             <router-link class="navlinks" to="/collection"><p>Mes produits</p></router-link>
-            <router-link class="navlinks" to="/contact"><p>Me contacter</p></router-link>
           </div>
         </div>
         <div class="footer-text-wrapper">

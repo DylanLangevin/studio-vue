@@ -18,6 +18,7 @@ export interface CandleCardProps {
   colorPrice: number
   weight: number
   showDesc: boolean
+  candlePrice: number
 }
 export interface basketItem {
   id: string
@@ -34,7 +35,6 @@ const state = reactive({
 })
 
 const { basketIds } = toRefs(state)
-console.log(basketIds.value)
 
 const isMobile = computed(() => {
   return window.innerWidth < 768
@@ -52,14 +52,14 @@ const cardStyle = computed(() => ({
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   width: width ? width : '281px',
-  height: height ? height : '353px'
+  height: height ? height : '383px',
 }))
 
 const isInBasket = computed(() => {
   return basketIds.value.includes(candleId)
 })
 
-const addToBasketObject = (candleId: number) => {
+const addToBasketObject = (candleId: number, candlePrice: number) => {
   let basket = getBasket()
 
   let candleItem: basketItem = {
@@ -67,7 +67,7 @@ const addToBasketObject = (candleId: number) => {
     candleId: 0,
     scent: '',
     color: '',
-    basicPrice: 0
+    basicPrice: candlePrice
   }
 
   // TODO 1
@@ -76,11 +76,10 @@ const addToBasketObject = (candleId: number) => {
     candleItem['candleId'] = candleId
     candleItem['scent'] = ''
     candleItem['color'] = ''
-    candleItem['basicPrice'] = 6
+    candleItem['basicPrice'] = candlePrice
 
     basket.push(candleItem)
     sessionStorage.setItem('basketIds', JSON.stringify(basket))
-    console.log(basket, sessionStorage)
   }
   basketIds.value = getBasketIds()
 }
@@ -101,7 +100,7 @@ const addToBasketObject = (candleId: number) => {
           v-if="shouldShowDesc"
           class="icon"
           :class="{ 'is-visible': descActive || isMobile }"
-          @click="addToBasketObject(props.id)"
+          @click="addToBasketObject(props.id, props.candlePrice)"
         ></span>
       </div>
 
@@ -113,6 +112,7 @@ const addToBasketObject = (candleId: number) => {
         :class="{ 'is-visible': descActive || isMobile }"
         class="card-desc"
       >
+      <h3 style="font-family: Open Sauce Sans;color: white;">{{ props.candlePrice }} €</h3>
         <p>
           Taille en cm (sans la mèche) {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
         </p>
@@ -143,23 +143,23 @@ const addToBasketObject = (candleId: number) => {
   display: flex;
   justify-content: space-between;
   gap: 60px;
+  margin:0 20px;
 }
 
 .icon {
   width: 30px;
   height: 30px;
   opacity: 0;
-  transition: opacity 0.3s ease;
   background-image: url('../assets/img/icons8-ajouter-un-panier-30.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin-top: 5px;
+  padding: 15px;
 }
 
 .icon:hover {
   cursor: pointer;
-  padding: 10px;
 }
 
 .is-visible {
@@ -169,6 +169,7 @@ const addToBasketObject = (candleId: number) => {
 
 #card-title {
   color: white;
+  text-align:center
 }
 
 .card-desc {
