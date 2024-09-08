@@ -5,6 +5,7 @@ import { uuid } from 'vue-uuid'
 import { getBasket, getBasketIds } from '@/utils/basket'
 
 const descActive = ref(false)
+const addedProductAlert = ref(false)
 
 export interface CandleCardProps {
   id: number
@@ -82,6 +83,8 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
     sessionStorage.setItem('basketIds', JSON.stringify(basket))
   }
   basketIds.value = getBasketIds()
+
+  addedProductAlert.value = true
 }
 </script>
 
@@ -103,6 +106,7 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
           @click="addToBasketObject(props.id, props.candlePrice)"
         ></span>
       </div>
+      <div class="product-added-alert" v-if="addedProductAlert">Produit ajouté ! </div>
 
       <div v-if="shouldShowDesc && isInBasket" id="in-basket">
         <p>Déja dans votre panier !</p>
@@ -166,7 +170,8 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
 
 #card-title {
   color: white;
-  text-align:center
+  text-align:center;
+  
 }
 
 .card-desc {
@@ -195,6 +200,11 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
 }
 #in-basket p {
   color: white;
+}
+
+.product-added-alert {
+  color: white;
+  font-family: 'Open Sans Sauce';
 }
 
 @media only screen and (max-width: 600px) {
