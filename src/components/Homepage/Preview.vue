@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import CandleCard, { CandleCardProps } from '../CandleCard.vue'
-
 import candles from '@/api/candles.js'
 import Button from '@/components/Button.vue'
 import { useRouter } from 'vue-router'
@@ -9,12 +8,14 @@ import { useRouter } from 'vue-router'
 const isMobile = computed(() => {
   return window.innerWidth < 768
 })
+
 const router = useRouter()
 const containerRef = ref<HTMLElement | null>(null)
 const leftPosition = ref(0)
 
 const previewCandles = computed(() => {
-  return candles.filter((item: CandleCardProps) => item.id < 6)
+  
+  return candles.filter((item: CandleCardProps) => item.candleId < 6)
 })
 
 const redirectTo = (location: string) => {
@@ -57,8 +58,8 @@ onUnmounted(() => {
         <div v-if="previewCandles" id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
             v-for="candle in previewCandles"
-            :id="candle.id"
-            :key="candle.id"
+            :key="candle.candleId"
+            :candleId="candle.candleId"
             :title="candle.name"
             :img="candle.img"
             :candleSizeWidth="candle.size.width"

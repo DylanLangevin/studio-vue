@@ -8,7 +8,7 @@ const descActive = ref(false)
 const addedProductAlert = ref(false)
 
 export interface CandleCardProps {
-  id: number
+  id: string
   title: string
   img: string
   candleSizeWidth: number
@@ -20,6 +20,7 @@ export interface CandleCardProps {
   candlePrice: number
   width?: string | null
   height?: string | null
+  candleId: number
 }
 export interface basketItem {
   id: string
@@ -44,7 +45,7 @@ const isMobile = computed(() => {
 const image = props.img
 const width = props.width
 const height = props.height
-const candleId = props.id
+const candleId = props.candleId
 const shouldShowDesc = props.showDesc ? true : false
 
 const cardStyle = computed(() => ({
@@ -60,9 +61,9 @@ const isInBasket = computed(() => {
   return basketIds.value.includes(candleId)
 })
 
-const addToBasketObject = (candleId: number, candlePrice: number) => {
+const addToBasketObject = (candleId: any, candlePrice: number) => {
   let basket = getBasket()
-
+  
   let candleItem: basketItem = {
     id: '',
     candleId: 0,
@@ -103,7 +104,7 @@ const addToBasketObject = (candleId: number, candlePrice: number) => {
           v-if="shouldShowDesc"
           class="icon"
           :class="{ 'is-visible': descActive || isMobile }"
-          @click="addToBasketObject(props.id, props.candlePrice)"
+          @click="addToBasketObject(props.candleId, props.candlePrice)"
         ></span>
       </div>
       <div class="product-added-alert" v-if="addedProductAlert">Produit ajouté ! </div>

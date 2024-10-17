@@ -16,8 +16,8 @@ import candles from '@/api/candles.js'
       <div id="cards-container">
         <CandleCard
           v-for="candle in candles"
-          :id="candle.id"
-          :key="candle.id"
+          :candleId="candle.candleId"
+          :key="candle.candleId"
           class="card"
           :title="candle.name"
           :img="candle.img"

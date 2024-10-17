@@ -10,7 +10,7 @@ import tresseeImg from '@/assets/img/candle-cards/tressee.jpeg'
 
 const candles = [
     {
-        id: 6,
+        candleId: 6,
         name: 'Torsade',
         img: torsadeImg,
         size: {
@@ -20,11 +20,11 @@ const candles = [
         scentPrice: 1.5,
         colorPrice: 1,
         weight: 70,
-        price: 6
+        price: 6,
     },
 
     {
-        id: 2,
+        candleId: 2,
         name: 'Tornade',
         img: tornadeImg,
         size: {
@@ -37,7 +37,7 @@ const candles = [
         price: 6
     },
     {
-        id: 3,
+        candleId: 3,
         name: 'Nuage',
         img: nuageImg,
         size: {
@@ -50,7 +50,7 @@ const candles = [
         price: 4
     },
     {
-        id: 13,
+        candleId: 13,
         name: 'Little Rainbow',
         img: petitRainbowImg,
         size: {
@@ -64,7 +64,7 @@ const candles = [
         price: 15
     },
     {
-        id: 5,
+        candleId: 5,
         name: 'Petite bulle',
         img: petitBubbleImg,
         size: {
@@ -77,7 +77,7 @@ const candles = [
         price: 3.5
     },
     {
-        id: 4,
+        candleId: 4,
         name: 'Pivoine',
         img: pivoineImg,
         size: {
@@ -90,7 +90,7 @@ const candles = [
         price: 6
     },
     {
-        id: 7,
+        candleId: 7,
         name: 'Rainbow',
         img: rainbowImg,
         size: {
@@ -104,7 +104,7 @@ const candles = [
     },
 
     {
-        id: 11,
+        candleId: 11,
         name: 'Tressee',
         img: tresseeImg,
         size: {
@@ -117,7 +117,7 @@ const candles = [
         price: 6
     },
     {
-        id: 19,
+        candleId: 19,
         name: 'Grande Bulle',
         img: bubbleImg,
         size: {

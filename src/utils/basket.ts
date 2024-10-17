@@ -28,11 +28,17 @@ export function getBasketCandlesInfos(basketIds: number[]) {
     const basketItem = getBasketItemById(element)
 
     candles.forEach((candle: { id: number }) => {
-      if (candle.id === basketItem.candleId) {
+      if (candle.candleId === basketItem.candleId) {
+
+        candle.id = basketItem.id
+        candle['scent'] = basketItem.scent
+        candle['color'] = basketItem.color
+        
         basketToDisplay.push(candle)
       }
     })
   })
+
 
   return basketToDisplay
 }
@@ -56,7 +62,7 @@ export function getBasketItemById(basketId: number) {
   return basketItem
 }
 
-export function modifyBasketItem(candleId: number, attributeName: string, attribute: string) {
+export function modifyBasketItem(candleId: any, attributeName: string, attribute: string) {
   const basket = JSON.parse(sessionStorage.getItem('basketIds') || '[]') as Array<{
     id: number
     [key: string]: unknown

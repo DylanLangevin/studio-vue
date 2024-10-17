@@ -27,6 +27,7 @@ const state = reactive({
 const { basketIds } = toRefs(state)
 
 const removeCandle = (candleId: number) => {
+  
   removeItemFromBasket(candleId)
   state.basketIds = getBasketIds()
 }
@@ -67,8 +68,14 @@ const redirectTo = (location: string) => {
                 <p>Ajouter un parfum ? (+ {{ candle.scentPrice }}€)</p>
                 <select
                   @change="(event) => modifyBasketItem(candle.id, 'scent', event.target.value)"
+                  :value="candle.scent || ''"
                 >
-                  <option v-for="scent in scents" :key="scent.id" :value="scent.name">
+                  <option disabled value="">Sélectionnez un parfum</option>
+                  <option
+                    v-for="scent in scents"
+                    :key="scent.id"
+                    :value="scent.name"
+                  >
                     {{ scent.name }}
                   </option>
                 </select>
@@ -76,13 +83,13 @@ const redirectTo = (location: string) => {
               <div>
                 <p>Ajouter une couleur ? (+ {{ candle.colorPrice }}€)</p>
                 <select
-                  @change="(event) => modifyBasketItem(candle.id, 'color', event.target.value)"
+                  @change="(event) => modifyBasketItem(candle.id, 'color', event.target.value)" :value="candle.color || ''"
                 >
+                  <option  value="">Sélectionnez une couleur</option>
                   <option
                     v-for="color in colors"
                     :key="color.id"
                     :value="color.name"
-                    @click="modifyBasketItem(candle.id, 'color', color.name)"
                   >
                     {{ color.name }}
                   </option>
