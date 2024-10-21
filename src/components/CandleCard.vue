@@ -28,6 +28,7 @@ export interface basketItem {
   scent: string
   color: string
   basicPrice: number
+  price: number
 }
 
 const props = defineProps<CandleCardProps>()
@@ -72,21 +73,24 @@ const addToBasketObject = (candleId: any, candlePrice: number) => {
     basicPrice: candlePrice
   }
 
-  // TODO 1
   if (!basketIds.value.includes(candleId)) {
     candleItem['id'] = uuid.v1()
     candleItem['candleId'] = candleId
     candleItem['scent'] = ''
     candleItem['color'] = ''
     candleItem['basicPrice'] = candlePrice
+    candleItem['extraColorPrice'] = 0
+    candleItem['extraScentPrice'] = 0
 
     basket.push(candleItem)
     sessionStorage.setItem('basketIds', JSON.stringify(basket))
+
   }
   basketIds.value = getBasketIds()
 
   addedProductAlert.value = true
 }
+
 </script>
 
 <template>

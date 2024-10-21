@@ -36,6 +36,19 @@ const redirectTo = (location: string) => {
   router.push(location)
 }
 
+const updateBasket = () => {
+  state.basketIds = getBasketIds();
+};
+
+const modifyAndRefresh = (candleId: number, attributeName: string, attribute: string, extraPrice: number, extraName: string) => {
+  const success = modifyBasketItem(candleId, attributeName, attribute, extraPrice, extraName);
+  
+  if (success) {
+
+    updateBasket();
+  }
+};
+
 </script>
 
 <template>
@@ -67,7 +80,7 @@ const redirectTo = (location: string) => {
               <div>
                 <p>Ajouter un parfum ? (+ {{ candle.scentPrice }}€)</p>
                 <select
-                  @change="(event) => modifyBasketItem(candle.id, 'scent', event.target.value)"
+                  @change="(event) => modifyAndRefresh(candle.id, 'scent', event.target.value, candle.scentPrice, 'extraScentPrice')"
                   :value="candle.scent || ''"
                 >
                   <option disabled value="">Sélectionnez un parfum</option>
@@ -83,9 +96,9 @@ const redirectTo = (location: string) => {
               <div>
                 <p>Ajouter une couleur ? (+ {{ candle.colorPrice }}€)</p>
                 <select
-                  @change="(event) => modifyBasketItem(candle.id, 'color', event.target.value)" :value="candle.color || ''"
+                  @change="(event) => modifyAndRefresh(candle.id, 'color', event.target.value, candle.colorPrice, 'extraColorPrice')" :value="candle.color || ''"
                 >
-                  <option  value="">Sélectionnez une couleur</option>
+                  <option disabled value="">Sélectionnez une couleur</option>
                   <option
                     v-for="color in colors"
                     :key="color.id"
@@ -106,7 +119,7 @@ const redirectTo = (location: string) => {
             "
           >
             <div class="btn" @click="removeCandle(candle.id)">X</div>
-            <p>{{ candle.price }}€</p>
+            <p>{{ candle.basicPrice + candle.extraColorPrice + candle.extraScentPrice }}€</p>
           </div>
         </div>
         <div v-if="getBasketCandlesInfos(basketIds).length < 1" id="empty-basket">
