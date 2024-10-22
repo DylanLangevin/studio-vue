@@ -2,7 +2,7 @@
 import { computed, reactive, ref, toRefs } from 'vue'
 import { uuid } from 'vue-uuid'
 
-import { getBasket, getBasketIds } from '@/utils/basket'
+import { getBasket, getBasketIds, getBasketItemById } from '@/utils/basket'
 
 const descActive = ref(false)
 const addedProductAlert = ref(false)
@@ -59,7 +59,25 @@ const cardStyle = computed(() => ({
 }))
 
 const isInBasket = computed(() => {
+  
   return basketIds.value.includes(candleId)
+})
+
+const nbrInBasket = computed(() => {
+
+  let nbrCandles = 0
+
+  basketIds.value.forEach(id => {
+
+    let basketItem = getBasketItemById(id)
+
+    if (basketItem.candleId === candleId) {
+
+      nbrCandles++
+    }
+  })
+
+  return nbrCandles
 })
 
 const addToBasketObject = (candleId: any, candlePrice: number) => {
@@ -111,10 +129,10 @@ const addToBasketObject = (candleId: any, candlePrice: number) => {
           @click="addToBasketObject(props.candleId, props.candlePrice)"
         ></span>
       </div>
-      <div class="product-added-alert" v-if="addedProductAlert">Produit ajouté ! </div>
+      <div class="product-added-alert" v-if="addedProductAlert"> {{ nbrInBasket }} {{ props.title }}<span v-if="nbrInBasket > 1" >s</span> présent<span v-if="nbrInBasket > 1" >s</span> dans votre panier ! </div>
 
       <div v-if="shouldShowDesc && isInBasket" id="in-basket">
-        <p>Déja dans votre panier !</p>
+        <p> Déja dans votre panier !</p>
       </div>
       <div
         v-if="shouldShowDesc"
@@ -166,6 +184,9 @@ const addToBasketObject = (candleId: any, candlePrice: number) => {
 
 .icon:hover {
   cursor: pointer;
+  padding: 10px;
+  border-radius: 4px; 
+  transform: scale(1.1); /* Agrandissement sur hover */
 }
 
 .is-visible {
