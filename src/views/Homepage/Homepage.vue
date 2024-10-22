@@ -47,7 +47,7 @@ onUnmounted(() => {
     <div class="banner-filter">
       <img
         id="img-banner"
-        src="@/assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
+        src="https://res.cloudinary.com/do3dud2ur/image/upload/v1729609689/569ACEB2-B0F7-4C66-9A63-420E804809293_qgw4tx.png"
         alt=""
         :style="{ transform: `translateY(${translateValueImg1}px)` }"
       />
@@ -57,7 +57,7 @@ onUnmounted(() => {
     <div class="banner-filter">
       <img
         id="img-banner-2"
-        src="@/assets/img/7F94ABB3-3AAE-41E4-863E-102B0FF05D56.png"
+        src="https://res.cloudinary.com/do3dud2ur/image/upload/v1729609688/7F94ABB3-3AAE-41E4-863E-102B0FF05D56_jqd6g2.png"
         alt=""
         :style="{ transform: `translateY(${translateValueImg2}px)` }"
       />

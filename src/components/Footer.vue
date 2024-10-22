@@ -65,19 +65,19 @@ function redirectTo(location: string) {
 }
 
 #instagram-icon {
-  background-image: url('../assets/img/icons8-instagram_1.png');
+  background-image: url('https://res.cloudinary.com/do3dud2ur/image/upload/v1729609692/icons8-instagram_1_ieao5g.png');
   width: 45px;
   height: 45px;
 }
 
 #facebook-icon {
-  background-image: url('../assets/img/icons8-facebook-50.png');
+  background-image: url('https://res.cloudinary.com/do3dud2ur/image/upload/v1729609689/icons8-facebook-50_luwkpe.png');
   width: 42px;
   height: 42px;
 }
 
 #threads-icon {
-  background-image: url('../assets/img/icons8-fils-de-discussion-48.png');
+  background-image: url('https://res.cloudinary.com/do3dud2ur/image/upload/v1729609692/icons8-fils-de-discussion-48_i1dlly.png');
   width: 50px;
   height: 50px;
 }

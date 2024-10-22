@@ -41,7 +41,7 @@ onUnmounted(() => {
             <div id="first-img-wrapper">
               <img
                 id="first-img"
-                src="@/assets/img/IMG_0327_2.png"
+                src="https://res.cloudinary.com/do3dud2ur/image/upload/v1729609693/IMG_0327_2_wbg0nd.png"
                 alt=""
                 class="img"
                 :style="{ transform: `translateY(${translateValue1}px)` }"
@@ -50,7 +50,7 @@ onUnmounted(() => {
             <div id="third-img-wrapper">
               <img
                 id="third-img"
-                src="@/assets/img/9CEE5C54-5045-44D8-B17C-813D073E50C6.png"
+                src="https://res.cloudinary.com/do3dud2ur/image/upload/v1729609689/9CEE5C54-5045-44D8-B17C-813D073E50C6_wbxtw3.png"
                 alt=""
                 class="img"
                 :style="{ transform: `translateY(${translateValue1}px)` }"
@@ -60,7 +60,7 @@ onUnmounted(() => {
           <div id="second-img-wrapper">
             <img
               id="second-img"
-              src="@/assets/img/569ACEB2-B0F7-4C66-9A63-420E804809293.png"
+              src="https://res.cloudinary.com/do3dud2ur/image/upload/v1729609689/569ACEB2-B0F7-4C66-9A63-420E804809293_qgw4tx.png"
               alt=""
               class="img"
               :style="{ transform: `translateY(${translateValue2}px)` }"

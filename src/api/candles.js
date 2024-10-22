@@ -1,18 +1,8 @@
-import bubbleImg from '@/assets/img/candle-cards/bubble.jpeg'
-import nuageImg from '@/assets/img/candle-cards/nuage.jpeg'
-import petitRainbowImg from '@/assets/img/candle-cards/petit-rainbow.jpeg'
-import petitBubbleImg from '@/assets/img/candle-cards/petite-bubble.jpeg'
-import pivoineImg from '@/assets/img/candle-cards/pivoine.jpeg'
-import rainbowImg from '@/assets/img/candle-cards/rainbow.jpeg'
-import tornadeImg from '@/assets/img/candle-cards/tornade.jpeg'
-import torsadeImg from '@/assets/img/candle-cards/torsade.jpeg'
-import tresseeImg from '@/assets/img/candle-cards/tressee.jpeg'
-
 const candles = [
     {
         candleId: 6,
         name: 'Torsade',
-        img: torsadeImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/torsade_wj7g51.jpg',
         size: {
             width: 6,
             height: 5.5
@@ -26,7 +16,7 @@ const candles = [
     {
         candleId: 2,
         name: 'Tornade',
-        img: tornadeImg,
+        img: "https://res.cloudinary.com/do3dud2ur/image/upload/v1729608308/tornade_oo0thp.jpg",
         size: {
             width: 6,
             height: 5.5
@@ -39,7 +29,7 @@ const candles = [
     {
         candleId: 3,
         name: 'Nuage',
-        img: nuageImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608633/nuage_zdjfvc.jpg',
         size: {
             width: 6,
             height: 6
@@ -52,7 +42,7 @@ const candles = [
     {
         candleId: 13,
         name: 'Little Rainbow',
-        img: petitRainbowImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/petit-rainbow_el8rfl.jpg',
         size: {
             width: 12,
             height: 6
@@ -66,7 +56,7 @@ const candles = [
     {
         candleId: 5,
         name: 'Petite bulle',
-        img: petitBubbleImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/petite-bubble_ymtewh.jpg',
         size: {
             width: 4,
             height: 3
@@ -79,7 +69,7 @@ const candles = [
     {
         candleId: 4,
         name: 'Pivoine',
-        img: pivoineImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/pivoine_f7rzc7.jpg',
         size: {
             width: 4.5,
             height: 5
@@ -92,7 +82,7 @@ const candles = [
     {
         candleId: 7,
         name: 'Rainbow',
-        img: rainbowImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/rainbow_hopkfe.jpg',
         size: {
             width: 15,
             height: 15
@@ -106,7 +96,7 @@ const candles = [
     {
         candleId: 11,
         name: 'Tressee',
-        img: tresseeImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/tressee_ko3nvu.jpg',
         size: {
             width: 5.5,
             height: 5.5
@@ -119,7 +109,7 @@ const candles = [
     {
         candleId: 19,
         name: 'Grande Bulle',
-        img: bubbleImg,
+        img: 'https://res.cloudinary.com/do3dud2ur/image/upload/v1729608634/bubble_ji3kyp.jpg',
         size: {
             width: 6,
             height: 6
