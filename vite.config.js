@@ -15,6 +15,12 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, 'src')
       }
     },
-    base: env.VITE_BASE
+    base: env.VITE_BASE,
+    server: {
+
+      mimeTypes: {
+        'js': 'application/javascript',
+      }
+    }
   })
 }
