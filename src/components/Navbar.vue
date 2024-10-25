@@ -18,11 +18,6 @@ const props = defineProps<NavbarProps>()
       <div id="navlink-section-right">
         <router-link class="navlinks" to="/"><p>Accueil</p></router-link>
         <router-link class="navlinks" to="/collection"><p>Collection</p></router-link>
-        <router-link class="navlinks" to="/basket"
-          ><div
-            :class="[{ 'basket-icon': props.isScrolled, 'basket-icon-fixed': !props.isScrolled }]"
-          ></div
-        ></router-link>
       </div>
     </div>
   </main>

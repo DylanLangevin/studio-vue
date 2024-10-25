@@ -43,6 +43,9 @@ const isMobile = computed(() => {
   return window.innerWidth < 768
 })
 
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const image = props.img
 const width = props.width
 const height = props.height
@@ -58,82 +61,25 @@ const cardStyle = computed(() => ({
   height: height ? height : '383px',
 }))
 
-const isInBasket = computed(() => {
-  
-  return basketIds.value.includes(candleId)
-})
+const goToProduct = (id: number) => {
 
-const nbrInBasket = computed(() => {
-
-  let nbrCandles = 0
-
-  basketIds.value.forEach(id => {
-
-    let basketItem = getBasketItemById(id)
-
-    if (basketItem.candleId === candleId) {
-
-      nbrCandles++
-    }
-  })
-
-  return nbrCandles
-})
-
-const addToBasketObject = (candleId: any, candlePrice: number) => {
-  let basket = getBasket()
-  
-  let candleItem: basketItem = {
-    id: '',
-    candleId: 0,
-    scent: '',
-    color: '',
-    basicPrice: candlePrice
-  }
-
-  if (!basketIds.value.includes(candleId)) {
-    candleItem['id'] = uuid.v1()
-    candleItem['candleId'] = candleId
-    candleItem['scent'] = ''
-    candleItem['color'] = ''
-    candleItem['basicPrice'] = candlePrice
-    candleItem['extraColorPrice'] = 0
-    candleItem['extraScentPrice'] = 0
-
-    basket.push(candleItem)
-    sessionStorage.setItem('basketIds', JSON.stringify(basket))
-
-  }
-  basketIds.value = getBasketIds()
-
-  addedProductAlert.value = true
+  router.push({ name: 'candle', params: { id:id } });
 }
 
 </script>
 
 <template>
   <main>
-    <div
+
+          <div
       id="card"
       :style="cardStyle"
       @mouseover="descActive = true"
       @mouseleave="descActive = false"
+      @click="goToProduct(props.candleId)"
     >
       <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
         <h3 id="card-title">{{ props.title }}</h3>
-
-        <span
-          v-if="shouldShowDesc"
-          class="icon"
-          :class="{ 'is-visible': descActive || isMobile }"
-          @click="addToBasketObject(props.candleId, props.candlePrice)"
-        ></span>
-      </div>
-      <div class="product-added-alert" v-if="addedProductAlert"> {{ nbrInBasket }} {{ props.title }}<span v-if="nbrInBasket > 1" >s</span> présent<span v-if="nbrInBasket > 1" >s</span> dans votre panier ! </div>
-
-      <div v-if="shouldShowDesc && isInBasket" id="in-basket">
-        <p> Déja dans votre panier !</p>
-      </div>
       <div
         v-if="shouldShowDesc"
         :class="{ 'is-visible': descActive || isMobile }"
@@ -145,6 +91,7 @@ const addToBasketObject = (candleId: any, candlePrice: number) => {
         </p>
       </div>
     </div>
+
   </main>
 </template>
 
@@ -163,30 +110,19 @@ const addToBasketObject = (candleId: any, candlePrice: number) => {
   height: 353px;
 }
 
+#card:hover {
+
+  cursor: pointer;
+  transform: scale(1.07);
+  transition-property: transform;
+  transition-duration: 0.3s;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
   gap: 60px;
   margin:0 20px;
-}
-
-.icon {
-  width: 30px;
-  height: 30px;
-  opacity: 0;
-  background-image: url('../assets/img/icons8-ajouter-un-panier-30.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: 5px;
-  padding: 15px;
-}
-
-.icon:hover {
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 4px; 
-  transform: scale(1.1); /* Agrandissement sur hover */
 }
 
 .is-visible {

@@ -3,6 +3,7 @@ import Homepage from '../views/Homepage/Homepage.vue'
 import Collection from '../views/Collection/Collection.vue'
 import Contact from '../views/Contact/Contact.vue'
 import Basket from '../views/Basket/Basket.vue'
+import Candle from '../views/Candle/Candle.vue'
 
 const routes = [
   {
@@ -35,6 +36,14 @@ const routes = [
     component: Basket,
     meta: {
       title: 'Panier - Studio Bougie'
+    }
+  },
+  {
+    path: '/candle/:id',
+    name: 'candle',
+    component: Candle,
+    meta: {
+      title: 'Bougie - Studio Bougie'
     }
   }
 ]
