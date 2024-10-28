@@ -18,7 +18,7 @@ p {
 }
 
 #button {
-  border: none;
+
   width: fit-content;
   padding: 10px 20px;
   border-radius: 100px;
@@ -29,6 +29,9 @@ p {
 
 #button:hover {
   cursor: pointer;
+  transform: scale(1.07);
+  transition-property: transform;
+  transition-duration: 0.3s;
 }
 
 .button-white {
@@ -40,6 +43,10 @@ p {
 
 .button-green {
   background-color: var(--vt-c-dark-green);
+}
+.button-transparent {
+  background-color: transparent;
+  border: 2px var(--vt-c-dark-green) solid;
 }
 
 .button-grey {

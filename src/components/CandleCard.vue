@@ -70,28 +70,30 @@ const goToProduct = (id: number) => {
 
 <template>
   <main>
-
-          <div
+    <div
       id="card"
       :style="cardStyle"
       @mouseover="descActive = true"
       @mouseleave="descActive = false"
       @click="goToProduct(props.candleId)"
     >
-      <div :class="{ 'card-header': (descActive || isMobile) && shouldShowDesc }">
-        <h3 id="card-title">{{ props.title }}</h3>
-      <div
-        v-if="shouldShowDesc"
-        :class="{ 'is-visible': descActive || isMobile }"
-        class="card-desc"
-      >
-      <h3 style="font-family: Open Sauce Sans;color: white;">{{ props.candlePrice }} €</h3>
-        <p>
-          Taille en cm {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
-        </p>
-      </div>
-    </div>
 
+        <h3 id="card-title">{{ props.title }}</h3>
+        
+        <div
+          v-if="shouldShowDesc"
+          :class="{ 'is-visible': descActive || isMobile }"
+          class="card-desc"
+        >
+          <h3 style="font-family: Open Sauce Sans; color: white;">
+            {{ props.candlePrice }} €
+          </h3>
+          <p>
+            Taille en cm {{ props.candleSizeWidth }} x {{ props.candleSizeHeight }}
+          </p>
+        </div>
+      </div>
+  
   </main>
 </template>
 
@@ -169,15 +171,48 @@ const goToProduct = (id: number) => {
   font-family: 'Open Sans Sauce';
 }
 
+@media only screen and (max-width: 800px) {
+  .card-header {
+    gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #preview-section {
+    justify-content: start;
+    align-items: start;
+  }
+
+  #card {
+    max-width: 187px;
+    max-height: 255px;
+  }
+}
+
+
+
 @media only screen and (max-width: 600px) {
   #preview-section {
     justify-content: start;
     align-items: start;
   }
+
+  #card {
+    max-width: 155px;
+    max-height: 212px;
+  }
 }
-@media only screen and (max-width: 800px) {
-  .card-header {
-    gap: 30px;
+
+
+@media only screen and (max-width: 500px) {
+  #preview-section {
+    justify-content: start;
+    align-items: start;
+  }
+
+  #card {
+    max-width: 129px;
+    max-height: 176px;
   }
 }
 </style>
