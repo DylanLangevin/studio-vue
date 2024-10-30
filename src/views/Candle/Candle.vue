@@ -1,37 +1,34 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue'
-import CandleCard from '../../components/CandleCard.vue'
 import Footer from '@/components/Footer.vue'
 import Button from '../../components/Button.vue'
-import {  ref, computed } from 'vue'
-import { useRoute,useRouter } from 'vue-router'
 
-import candles from '@/api/candles.js'
+import {  ref, computed,onMounted } from 'vue'
+import { useRoute  } from 'vue-router'
+import { fetchCandleById } from '@/api/candle/candle'
+
 const route = useRoute()
-const router = useRouter()
+
+const candle = ref(null);
 
 const candleId = computed(() => {
 
     return route.params.id;
 })
 
-const candle = computed(() => {
+onMounted(async () => {
+  
+  candle.value = await fetchCandleById(parseInt(candleId.value))
+})
 
-    return candles.find(element => element.candleId === parseInt(candleId.value));
-});
 
 function redirectToInsta() {
+
   window.open(import.meta.env.VITE_CONTACT_INSTAGRAM, '_blank')
 }
 
-function redirectToHomepage() {
-  router.push({ name: 'collection'});
-}
-
-const image = candle.value.img
-
 const cardStyle = computed(() => ({
-  backgroundImage: `url(${image})`,
+  backgroundImage: `url(${candle.value.imageUrl})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
@@ -46,7 +43,7 @@ const cardStyle = computed(() => ({
 <template>
   <main id="candle">
     <Navbar id="navbar" ref="scrollContainer" :isScrolled="true" />
-    <div id="candle-content">
+    <div v-if="candle" id="candle-content">
       <div id="candle-description-container">
         <div id="candle-description">
           <div id="candle-img" :style="cardStyle">
@@ -93,6 +90,7 @@ const cardStyle = computed(() => ({
 
 #candle {
   width: 100%;
+
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -152,7 +150,6 @@ const cardStyle = computed(() => ({
 
 
 #candle-button-container {
-
   display: flex;
   gap: 10px;
   flex-wrap: wrap;

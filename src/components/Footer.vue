@@ -9,7 +9,7 @@ function redirectTo(location: string) {
 </script>
 
 <template>
-  <main>
+  <main id="footer">
     <div id="footer-section">
       <div id="footer-content">
         <div class="footer-text-wrapper">
@@ -36,6 +36,10 @@ function redirectTo(location: string) {
 </template>
 
 <style scoped>
+#footer {
+  height: auto;
+}
+
 #footer-section {
   height: 228px;
   width: 100vw;

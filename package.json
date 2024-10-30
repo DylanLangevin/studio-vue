@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@sanity/client": "^6.22.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-parallaxy": "^1.1.1",

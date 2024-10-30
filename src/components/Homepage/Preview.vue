@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import CandleCard, { CandleCardProps } from '../CandleCard.vue'
-import candles from '@/api/candles.js'
+import { fetchCandles } from '@/api/candle/candle'
 import Button from '@/components/Button.vue'
 import { useRouter } from 'vue-router'
+
+const candles = ref([])
+
+onMounted(async () => {
+  
+  candles.value = await fetchCandles()
+})
 
 const isMobile = computed(() => {
   return window.innerWidth < 768
@@ -15,7 +22,7 @@ const leftPosition = ref(0)
 
 const previewCandles = computed(() => {
   
-  return candles.filter((item: CandleCardProps) => item.candleId < 6)
+  return candles.value.filter((item: CandleCardProps) => item.candleId < 6)
 })
 
 const redirectTo = (location: string) => {
@@ -61,7 +68,7 @@ onUnmounted(() => {
             :key="candle.candleId"
             :candleId="candle.candleId"
             :title="candle.name"
-            :img="candle.img"
+            :img="candle.imageUrl"
             :candleSizeWidth="candle.size.width"
             :candleSizeHeight="candle.size.height"
             :scentPrice="candle.scentPrice"

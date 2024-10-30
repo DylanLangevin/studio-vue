@@ -2,8 +2,16 @@
 import Navbar from '@/components/Navbar.vue'
 import CandleCard from '../../components/CandleCard.vue'
 import Footer from '@/components/Footer.vue'
+import { fetchCandles } from '@/api/candle/candle'
+import { ref, onMounted } from 'vue'
 
-import candles from '@/api/candles.js'
+const candles = ref([])
+
+onMounted(async () => {
+  
+  candles.value = await fetchCandles()
+})
+
 </script>
 
 <template>
@@ -20,7 +28,7 @@ import candles from '@/api/candles.js'
           :key="candle.candleId"
           class="card"
           :title="candle.name"
-          :img="candle.img"
+          :img="candle.imageUrl"
           :candleSizeWidth="candle.size.width"
           :candleSizeHeight="candle.size.height"
           :scentPrice="candle.scentPrice"
