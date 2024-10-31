@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '../views/Homepage/Homepage.vue'
 import Collection from '../views/Collection/Collection.vue'
 import Contact from '../views/Contact/Contact.vue'
-import Basket from '../views/Basket/Basket.vue'
 import Candle from '../views/Candle/Candle.vue'
 
 const routes = [
@@ -28,14 +27,6 @@ const routes = [
     component: Contact,
     meta: {
       title: 'Contact - Studio Bougie'
-    }
-  },
-  {
-    path: '/basket',
-    name: 'basket',
-    component: Basket,
-    meta: {
-      title: 'Panier - Studio Bougie'
     }
   },
   {

@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { computed, reactive, ref, toRefs } from 'vue'
-import { uuid } from 'vue-uuid'
-
-import { getBasket, getBasketIds, getBasketItemById } from '@/utils/basket'
+import { computed, ref } from 'vue'
 
 const descActive = ref(false)
-const addedProductAlert = ref(false)
 
 export interface CandleCardProps {
   id: string
@@ -33,12 +29,6 @@ export interface basketItem {
 
 const props = defineProps<CandleCardProps>()
 
-const state = reactive({
-  basketIds: getBasketIds()
-})
-
-const { basketIds } = toRefs(state)
-
 const isMobile = computed(() => {
   return window.innerWidth < 768
 })
@@ -49,7 +39,6 @@ const router = useRouter()
 const image = props.img
 const width = props.width
 const height = props.height
-const candleId = props.candleId
 const shouldShowDesc = props.showDesc ? true : false
 
 const cardStyle = computed(() => ({
