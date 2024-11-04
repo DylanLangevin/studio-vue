@@ -2,6 +2,7 @@
 import Navbar from '@/components/Navbar.vue'
 import CandleCard from '../../components/CandleCard.vue'
 import Footer from '@/components/Footer.vue'
+import Button from '../../components/Button.vue'
 import { fetchCandles } from '@/api/candle/candle'
 import { ref, onMounted } from 'vue'
 
@@ -21,20 +22,27 @@ onMounted(async () => {
       <div id="collection-header">
         <h3 id="h3-title">Collection</h3>
       </div>
+      <!-- <Button
+          class="btn"
+          :text="'Me contacter'"
+          :color="'green'"
+          @click="testCreate({ _type: 'candle', title: 'Nouveau post' })"
+        /> -->
       <div id="cards-container">
         <CandleCard
           v-for="candle in candles"
-          :candleId="candle.candleId"
-          :key="candle.candleId"
+          :key="candle._id"
+          :id="candle._id"
+          :slug="candle.slug"
           class="card"
           :title="candle.name"
           :img="candle.imageUrl"
-          :candleSizeWidth="candle.size.width"
-          :candleSizeHeight="candle.size.height"
+          :candleSizeWidth="candle.width"
+          :candleSizeHeight="candle.height"
           :scentPrice="candle.scentPrice"
           :colorPrice="candle.colorPrice"
           :weight="candle.weight"
-          :candlePrice="candle.price"
+          :candlePrice="candle.candlePrice"
           :show-desc="true"
         />
       </div>
@@ -44,6 +52,12 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
+
+.btn {
+    margin-top: 20px;
+}
+
 #collection {
   width: 100%;
   overflow: hidden;

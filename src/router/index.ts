@@ -30,7 +30,7 @@ const routes = [
     }
   },
   {
-    path: '/candle/:id',
+    path: '/candle/:slug',
     name: 'candle',
     component: Candle,
     meta: {

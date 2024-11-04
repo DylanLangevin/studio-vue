@@ -13,12 +13,12 @@ const candle = ref(null);
 
 const candleId = computed(() => {
 
-    return route.params.id;
+    return route.params.slug;
 })
 
 onMounted(async () => {
   
-  candle.value = await fetchCandleById(parseInt(candleId.value))
+  candle.value = await fetchCandleById(candleId)
 })
 
 

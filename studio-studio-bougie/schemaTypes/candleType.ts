@@ -6,12 +6,6 @@ export const candleType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'candleId',
-      title: 'Candle ID',
-      type: 'number',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
@@ -29,11 +23,12 @@ export const candleType = defineType({
       title: 'Published At',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'imageUrl',
-      type: 'url',  // Changez le type de 'image' à 'url'
-      validation: (rule) => rule.uri({ allowRelative: true }), 
+      type: 'url', 
+      validation: (rule) => rule.uri({ allowRelative: true }).required(), 
     }),
     defineField({
       name: 'size',
@@ -43,6 +38,7 @@ export const candleType = defineType({
         { name: 'width', title: 'Width (cm)', type: 'number' },
         { name: 'height', title: 'Height (cm)', type: 'number' },
       ],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'weight',
@@ -54,11 +50,13 @@ export const candleType = defineType({
       name: 'scentPrice',
       title: 'Scent Price (€)',
       type: 'number',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'colorPrice',
       title: 'Color Price (€)',
       type: 'number',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'price',

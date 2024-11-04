@@ -5,6 +5,7 @@ const descActive = ref(false)
 
 export interface CandleCardProps {
   id: string
+  slug: string
   title: string
   img: string
   candleSizeWidth: number
@@ -16,15 +17,6 @@ export interface CandleCardProps {
   candlePrice: number
   width?: string | null
   height?: string | null
-  candleId: number
-}
-export interface basketItem {
-  id: string
-  candleId: number
-  scent: string
-  color: string
-  basicPrice: number
-  price: number
 }
 
 const props = defineProps<CandleCardProps>()
@@ -50,9 +42,9 @@ const cardStyle = computed(() => ({
   height: height ? height : '383px',
 }))
 
-const goToProduct = (id: number) => {
+const goToProduct = (slug: string) => {
 
-  router.push({ name: 'candle', params: { id:id } });
+  router.push({ name: 'candle', params: { slug:slug } });
 }
 
 </script>
@@ -64,7 +56,7 @@ const goToProduct = (id: number) => {
       :style="cardStyle"
       @mouseover="descActive = true"
       @mouseleave="descActive = false"
-      @click="goToProduct(props.candleId)"
+      @click="goToProduct(props.slug)"
     >
 
         <h3 id="card-title">{{ props.title }}</h3>

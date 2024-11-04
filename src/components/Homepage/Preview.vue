@@ -21,9 +21,10 @@ const containerRef = ref<HTMLElement | null>(null)
 const leftPosition = ref(0)
 
 const previewCandles = computed(() => {
-  
-  return candles.value.filter((item: CandleCardProps) => item.candleId < 6)
-})
+  return candles.value
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
+});
 
 const redirectTo = (location: string) => {
   router.push(location)
@@ -65,17 +66,18 @@ onUnmounted(() => {
         <div v-if="previewCandles" id="cards-container" ref="containerRef" :style="{ left: leftPosition + 'px' }">
           <CandleCard
             v-for="candle in previewCandles"
-            :key="candle.candleId"
-            :candleId="candle.candleId"
+            :key="candle._id"
+            :id="candle._id"
+            :slug="candle.slug._type"
             :title="candle.name"
             :img="candle.imageUrl"
-            :candleSizeWidth="candle.size.width"
-            :candleSizeHeight="candle.size.height"
+            :candleSizeWidth="candle.width"
+            :candleSizeHeight="candle.height"
             :scentPrice="candle.scentPrice"
             :colorPrice="candle.colorPrice"
             :weight="candle.weight"
             :desc="candle.desc"
-            :candlePrice="candle.price"
+            :candlePrice="candle.candlePrice"
             class="test"
             :show-desc="true"
           />
