@@ -59,7 +59,7 @@ const goToProduct = (slug: string) => {
       @click="goToProduct(props.slug)"
     >
 
-        <h3 id="card-title">{{ props.title }}</h3>
+        <p id="card-title">{{ props.title }}</p>
         
         <div
           v-if="shouldShowDesc"
@@ -116,7 +116,8 @@ const goToProduct = (slug: string) => {
 #card-title {
   color: white;
   text-align:center;
-  
+  font-family: 'Tan Nimbus';
+  font-size: var(--font-size-h3);
 }
 
 .card-desc {
@@ -155,6 +156,10 @@ const goToProduct = (slug: string) => {
 @media only screen and (max-width: 800px) {
   .card-header {
     gap: 30px;
+  }
+
+  #card-title {
+    font-size: var(--font-size-p);
   }
 }
 

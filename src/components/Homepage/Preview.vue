@@ -68,7 +68,7 @@ onUnmounted(() => {
             v-for="candle in previewCandles"
             :key="candle._id"
             :id="candle._id"
-            :slug="candle.slug._type"
+            :slug="candle.slug"
             :title="candle.name"
             :img="candle.imageUrl"
             :candleSizeWidth="candle.width"
@@ -78,7 +78,7 @@ onUnmounted(() => {
             :weight="candle.weight"
             :desc="candle.desc"
             :candlePrice="candle.candlePrice"
-            class="test"
+            class="candle-card"
             :show-desc="true"
           />
         </div>
@@ -103,12 +103,18 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 100px;
+}
+
+.candle-card {
+  margin: 40px 10px;
 }
 
 #preview-content {
   min-width: fit-content;
   z-index: 2;
   position: relative;
+  
 }
 
 #preview-heading {
@@ -132,10 +138,9 @@ onUnmounted(() => {
 }
 
 #cards-container {
-  margin: 40px 0;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  overflow-x: hidden;
 }
 
 /* Mobile */
@@ -178,13 +183,12 @@ onUnmounted(() => {
 /* Mobile et Tablettes */
 @media (max-width: 1200px) {
   #cards-container {
-    margin: 40px 0;
+
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: thin;
+    overflow-x: hidden;
   }
 
   #preview-section {
