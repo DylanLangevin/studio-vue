@@ -31,7 +31,7 @@ const redirectTo = (location: string) => {
 }
 
 const handleScroll = (event: WheelEvent) => {
-  if (containerRef.value) {
+  if (containerRef.value && window.innerWidth < 1220) {
     const scrollDistance = event.deltaY
     const currentScrollLeft = containerRef.value.scrollLeft
     containerRef.value.scrollLeft = currentScrollLeft + scrollDistance
